@@ -1,0 +1,10 @@
+{
+  "name": "nkhilicss",
+  "version": "1.0.0",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.72.0"
+  },
+  "devDependencies": {}
+}
