@@ -1,0 +1,215 @@
+$utilities: (
+  "display": (
+    "values": (
+      "flex": flex,
+      "inline-flex": inline-flex,
+      "block": block,
+      "inline": inline,
+      "inline-block": inline-block,
+      "grid": grid,
+      "inline-grid": inline-grid,
+      "flow-root": flow-root,
+      "d-none": none,
+      "contents": contents,
+      "table": table,
+      "table-row": table-row,
+      "list-item": list-item,
+    ),
+  ),
+  "padding": (
+    "prefix": "p",
+    "values": (
+      "0": 0,
+      "1": $base-padding,
+      "2": $base-padding * 2,
+      "3": $base-padding * 3,
+      "4": $base-padding * 4,
+      "5": $base-padding * 5,
+      "6": $base-padding * 6,
+    ),
+  ),
+  "padding-left": (
+    "prefix": "pl",
+    "values": (
+      "0": 0,
+      "1": $base-padding,
+      "2": $base-padding * 2,
+      "3": $base-padding * 3,
+      "4": $base-padding * 4,
+      "5": $base-padding * 5,
+      "6": $base-padding * 6,
+    ),
+  ),
+  "padding-right": (
+    "prefix": "pr",
+    "values": (
+      "0": 0,
+      "1": $base-padding,
+      "2": $base-padding * 2,
+      "3": $base-padding * 3,
+      "4": $base-padding * 4,
+      "5": $base-padding * 5,
+      "6": $base-padding * 6,
+    ),
+  ),
+  "padding-top": (
+    "prefix": "pt",
+    "values": (
+      "0": 0,
+      "1": $base-padding,
+      "2": $base-padding * 2,
+      "3": $base-padding * 3,
+      "4": $base-padding * 4,
+      "5": $base-padding * 5,
+      "6": $base-padding * 6,
+    ),
+  ),
+  "padding-bottom": (
+    "prefix": "pb",
+    "values": (
+      "0": 0,
+      "1": $base-padding,
+      "2": $base-padding * 2,
+      "3": $base-padding * 3,
+      "4": $base-padding * 4,
+      "5": $base-padding * 5,
+      "6": $base-padding * 6,
+    ),
+  ),
+  "margin": (
+    "prefix": "m",
+    "values": (
+      "0": 0,
+      "1": $base-margin,
+      "2": $base-margin * 2,
+      "3": $base-margin * 3,
+      "4": $base-margin * 4,
+      "5": $base-margin * 5,
+      "6": $base-margin * 6,
+    ),
+  ),
+  "margin-left": (
+    "prefix": "ml",
+    "values": (
+      "0": 0,
+      "1": $base-margin,
+      "2": $base-margin * 2,
+      "3": $base-margin * 3,
+      "4": $base-margin * 4,
+      "5": $base-margin * 5,
+      "6": $base-margin * 6,
+    ),
+  ),
+  "margin-right": (
+    "prefix": "mr",
+    "values": (
+      "0": 0,
+      "1": $base-margin,
+      "2": $base-margin * 2,
+      "3": $base-margin * 3,
+      "4": $base-margin * 4,
+      "5": $base-margin * 5,
+      "6": $base-margin * 6,
+    ),
+  ),
+  "margin-top": (
+    "prefix": "mt",
+    "values": (
+      "0": 0,
+      "1": $base-margin,
+      "2": $base-margin * 2,
+      "3": $base-margin * 3,
+      "4": $base-margin * 4,
+      "5": $base-margin * 5,
+      "6": $base-margin * 6,
+    ),
+  ),
+  "margin-bottom": (
+    "prefix": "mb",
+    "values": (
+      "0": 0,
+      "1": $base-margin,
+      "2": $base-margin * 2,
+      "3": $base-margin * 3,
+      "4": $base-margin * 4,
+      "5": $base-margin * 5,
+      "6": $base-margin * 6,
+    ),
+  ),
+  "border-radius": (
+    "prefix": "rounded",
+    "values": (
+      "none": 0,
+      "default": $base-border-radius,
+      "full": 50%,
+      "2": $base-border-radius * 2,
+      "3": $base-border-radius * 3,
+      "4": $base-border-radius * 4,
+      "5": $base-border-radius * 5,
+      "6": $base-border-radius * 6,
+    ),
+  ),
+  "overflow": (
+    "prefix": "overflow",
+    "values": (
+      "auto": auto,
+      "hidden": hidden,
+      "clip": clip,
+      "visible": visible,
+      "scroll": scroll,
+    ),
+  ),
+  "overflow-x": (
+    "prefix": "overflow-x",
+    "values": (
+      "auto": auto,
+      "hidden": hidden,
+      "clip": clip,
+      "visible": visible,
+      "scroll": scroll,
+    ),
+  ),
+  "overflow-y": (
+    "prefix": "overflow-y",
+    "values": (
+      "auto": auto,
+      "hidden": hidden,
+      "clip": clip,
+      "visible": visible,
+      "scroll": scroll,
+    ),
+  ),
+  "position": (
+    "values": (
+      "static": static,
+      "fixed": fixed,
+      "absolute": absolute,
+      "relative": relative,
+      "sticky": sticky,
+    ),
+  ),
+);
+
+// generate utility classes
+@each $property, $val in $utilities {
+  $prefix: map-get($val, "prefix");
+  $values: map-get($val, "values");
+
+  @each $keyValue, $value in $values {
+    @if ($prefix) {
+      @if ($keyValue == "default") {
+        .#{$prefix} {
+          #{$property}: $value;
+        }
+      } @else {
+        .#{$prefix}-#{$keyValue} {
+          #{$property}: $value;
+        }
+      }
+    } @else {
+      .#{$keyValue} {
+        #{$property}: $value;
+      }
+    }
+  }
+}
