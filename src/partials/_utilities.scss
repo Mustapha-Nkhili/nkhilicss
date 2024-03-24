@@ -188,6 +188,22 @@ $utilities: (
       "sticky": sticky,
     ),
   ),
+  "top": (
+    "prefix": "top",
+    "values": $spacing-values,
+  ),
+  "bottom": (
+    "prefix": "bottom",
+    "values": $spacing-values,
+  ),
+  "left": (
+    "prefix": "left",
+    "values": $spacing-values,
+  ),
+  "right": (
+    "prefix": "right",
+    "values": $spacing-values,
+  ),
 );
 
 // generate utility classes
@@ -201,14 +217,29 @@ $utilities: (
         .#{$prefix} {
           #{$property}: $value;
         }
+        .hover-#{$prefix} {
+          &:hover {
+            #{$property}: $value;
+          }
+        }
       } @else {
         .#{$prefix}-#{$keyValue} {
           #{$property}: $value;
+        }
+        .hover-#{$prefix}-#{$keyValue} {
+          &:hover {
+            #{$property}: $value;
+          }
         }
       }
     } @else {
       .#{$keyValue} {
         #{$property}: $value;
+      }
+      .hover-#{$keyValue} {
+        &:hover {
+          #{$property}: $value;
+        }
       }
     }
   }
