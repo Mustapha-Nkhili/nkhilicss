@@ -18,123 +18,43 @@ $utilities: (
   ),
   "padding": (
     "prefix": "p",
-    "values": (
-      "0": 0,
-      "1": $base-padding,
-      "2": $base-padding * 2,
-      "3": $base-padding * 3,
-      "4": $base-padding * 4,
-      "5": $base-padding * 5,
-      "6": $base-padding * 6,
-    ),
+    "values": spacing-function($base-padding),
   ),
   "padding-left": (
     "prefix": "pl",
-    "values": (
-      "0": 0,
-      "1": $base-padding,
-      "2": $base-padding * 2,
-      "3": $base-padding * 3,
-      "4": $base-padding * 4,
-      "5": $base-padding * 5,
-      "6": $base-padding * 6,
-    ),
+    "values": spacing-function($base-padding),
   ),
   "padding-right": (
     "prefix": "pr",
-    "values": (
-      "0": 0,
-      "1": $base-padding,
-      "2": $base-padding * 2,
-      "3": $base-padding * 3,
-      "4": $base-padding * 4,
-      "5": $base-padding * 5,
-      "6": $base-padding * 6,
-    ),
+    "values": spacing-function($base-padding),
   ),
   "padding-top": (
     "prefix": "pt",
-    "values": (
-      "0": 0,
-      "1": $base-padding,
-      "2": $base-padding * 2,
-      "3": $base-padding * 3,
-      "4": $base-padding * 4,
-      "5": $base-padding * 5,
-      "6": $base-padding * 6,
-    ),
+    "values": spacing-function($base-padding),
   ),
   "padding-bottom": (
     "prefix": "pb",
-    "values": (
-      "0": 0,
-      "1": $base-padding,
-      "2": $base-padding * 2,
-      "3": $base-padding * 3,
-      "4": $base-padding * 4,
-      "5": $base-padding * 5,
-      "6": $base-padding * 6,
-    ),
+    "values": spacing-function($base-padding),
   ),
   "margin": (
     "prefix": "m",
-    "values": (
-      "0": 0,
-      "1": $base-margin,
-      "2": $base-margin * 2,
-      "3": $base-margin * 3,
-      "4": $base-margin * 4,
-      "5": $base-margin * 5,
-      "6": $base-margin * 6,
-    ),
+    "values": spacing-function($base-margin),
   ),
   "margin-left": (
     "prefix": "ml",
-    "values": (
-      "0": 0,
-      "1": $base-margin,
-      "2": $base-margin * 2,
-      "3": $base-margin * 3,
-      "4": $base-margin * 4,
-      "5": $base-margin * 5,
-      "6": $base-margin * 6,
-    ),
+    "values": spacing-function($base-margin),
   ),
   "margin-right": (
     "prefix": "mr",
-    "values": (
-      "0": 0,
-      "1": $base-margin,
-      "2": $base-margin * 2,
-      "3": $base-margin * 3,
-      "4": $base-margin * 4,
-      "5": $base-margin * 5,
-      "6": $base-margin * 6,
-    ),
+    "values": spacing-function($base-margin),
   ),
   "margin-top": (
     "prefix": "mt",
-    "values": (
-      "0": 0,
-      "1": $base-margin,
-      "2": $base-margin * 2,
-      "3": $base-margin * 3,
-      "4": $base-margin * 4,
-      "5": $base-margin * 5,
-      "6": $base-margin * 6,
-    ),
+    "values": spacing-function($base-margin),
   ),
   "margin-bottom": (
     "prefix": "mb",
-    "values": (
-      "0": 0,
-      "1": $base-margin,
-      "2": $base-margin * 2,
-      "3": $base-margin * 3,
-      "4": $base-margin * 4,
-      "5": $base-margin * 5,
-      "6": $base-margin * 6,
-    ),
+    "values": spacing-function($base-margin),
   ),
   "border-radius": (
     "prefix": "rounded",
@@ -190,19 +110,19 @@ $utilities: (
   ),
   "top": (
     "prefix": "top",
-    "values": $spacing-values,
+    "values": spacing-function($base-spacing),
   ),
   "bottom": (
     "prefix": "bottom",
-    "values": $spacing-values,
+    "values": spacing-function($base-spacing),
   ),
   "left": (
     "prefix": "left",
-    "values": $spacing-values,
+    "values": spacing-function($base-spacing),
   ),
   "right": (
     "prefix": "right",
-    "values": $spacing-values,
+    "values": spacing-function($base-spacing),
   ),
 );
 
@@ -222,6 +142,13 @@ $utilities: (
             #{$property}: $value;
           }
         }
+        @each $responsive-prefix, $val in $breakpoints {
+          @include responsive-layout($responsive-prefix) {
+            .#{$responsive-prefix}-#{$prefix} {
+              #{$property}: $value;
+            }
+          }
+        }
       } @else {
         .#{$prefix}-#{$keyValue} {
           #{$property}: $value;
@@ -229,6 +156,13 @@ $utilities: (
         .hover-#{$prefix}-#{$keyValue} {
           &:hover {
             #{$property}: $value;
+          }
+        }
+        @each $responsive-prefix, $val in $breakpoints {
+          @include responsive-layout($responsive-prefix) {
+            .#{$responsive-prefix}-#{$prefix}-#{$keyValue} {
+              #{$property}: $value;
+            }
           }
         }
       }
@@ -239,6 +173,13 @@ $utilities: (
       .hover-#{$keyValue} {
         &:hover {
           #{$property}: $value;
+        }
+      }
+      @each $responsive-prefix, $val in $breakpoints {
+        @include responsive-layout($responsive-prefix) {
+          .#{$responsive-prefix}-#{$keyValue} {
+            #{$property}: $value;
+          }
         }
       }
     }

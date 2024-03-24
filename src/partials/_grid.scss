@@ -24,7 +24,7 @@ $grid-columns: 12 !default;
     @include responsive-layout($prefix) {
       @for $i from 1 through $grid-columns {
         .#{$prefix}-col-#{$i} {
-          flex: 0 0 100% / $grid-columns * $i;
+          flex: 0 0 math.div(100%, $grid-columns) * $i;
         }
       }
     }

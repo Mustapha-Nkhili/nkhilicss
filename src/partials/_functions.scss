@@ -1,0 +1,14 @@
+@function spacing-function($spacing-base: $base-spacing, $max: 100) {
+  $spacing-map: ();
+
+  @for $i from 0 through $max {
+    $spacing-map: map-merge(
+      $spacing-map,
+      (
+        "#{($i)}": $i * $spacing-base,
+      )
+    );
+  }
+
+  @return $spacing-map;
+}
