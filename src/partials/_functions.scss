@@ -12,3 +12,22 @@
 
   @return $spacing-map;
 }
+
+@function merge-utilities-map($map, $property, $prefix) {
+  // Merge the spacing function with the existing property values
+  $width-values: map-merge(
+    map-get(map-get($map, $property), "values"),
+    spacing-function()
+  );
+  
+  // Update the property map with the new values
+  @return map-merge(
+    $map,
+    (
+      $property: (
+        prefix: #{$prefix},
+        values: $width-values,
+      )
+    )
+  );
+}

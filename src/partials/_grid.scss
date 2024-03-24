@@ -177,7 +177,7 @@ $grid-system-utilities: (
       end: end,
     ),
   ),
-);
+) !default;
 
 .container {
   width: 100%;

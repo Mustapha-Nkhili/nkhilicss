@@ -1,130 +1,216 @@
+@use "sass:map";
+
+// Define utilities map
 $utilities: (
   "display": (
-    "values": (
-      "flex": flex,
-      "inline-flex": inline-flex,
-      "block": block,
-      "inline": inline,
-      "inline-block": inline-block,
-      "grid": grid,
-      "inline-grid": inline-grid,
-      "flow-root": flow-root,
-      "d-none": none,
-      "contents": contents,
-      "table": table,
-      "table-row": table-row,
-      "list-item": list-item,
+    values: (
+      flex: flex,
+      inline-flex: inline-flex,
+      block: block,
+      inline: inline,
+      inline-block: inline-block,
+      grid: grid,
+      inline-grid: inline-grid,
+      flow-root: flow-root,
+      d-none: none,
+      contents: contents,
+      table: table,
+      table-row: table-row,
+      list-item: list-item,
     ),
   ),
   "padding": (
-    "prefix": "p",
-    "values": spacing-function($base-padding),
+    prefix: p,
+    values: spacing-function($base-padding),
   ),
   "padding-left": (
-    "prefix": "pl",
-    "values": spacing-function($base-padding),
+    prefix: pl,
+    values: spacing-function($base-padding),
   ),
   "padding-right": (
-    "prefix": "pr",
-    "values": spacing-function($base-padding),
+    prefix: pr,
+    values: spacing-function($base-padding),
   ),
   "padding-top": (
-    "prefix": "pt",
-    "values": spacing-function($base-padding),
+    prefix: pt,
+    values: spacing-function($base-padding),
   ),
   "padding-bottom": (
-    "prefix": "pb",
-    "values": spacing-function($base-padding),
+    prefix: pb,
+    values: spacing-function($base-padding),
   ),
   "margin": (
-    "prefix": "m",
-    "values": spacing-function($base-margin),
+    prefix: m,
+    values: spacing-function($base-margin),
   ),
   "margin-left": (
-    "prefix": "ml",
-    "values": spacing-function($base-margin),
+    prefix: ml,
+    values: spacing-function($base-margin),
   ),
   "margin-right": (
-    "prefix": "mr",
-    "values": spacing-function($base-margin),
+    prefix: mr,
+    values: spacing-function($base-margin),
   ),
   "margin-top": (
-    "prefix": "mt",
-    "values": spacing-function($base-margin),
+    prefix: mt,
+    values: spacing-function($base-margin),
   ),
   "margin-bottom": (
-    "prefix": "mb",
-    "values": spacing-function($base-margin),
+    prefix: mb,
+    values: spacing-function($base-margin),
   ),
   "border-radius": (
-    "prefix": "rounded",
-    "values": (
-      "none": 0,
-      "default": $base-border-radius,
-      "full": 50%,
-      "2": $base-border-radius * 2,
-      "3": $base-border-radius * 3,
-      "4": $base-border-radius * 4,
-      "5": $base-border-radius * 5,
-      "6": $base-border-radius * 6,
+    prefix: rounded,
+    values: (
+      none: 0,
+      default: $base-border-radius,
+      full: 50%,
+      2: $base-border-radius * 2,
+      3: $base-border-radius * 3,
+      4: $base-border-radius * 4,
+      5: $base-border-radius * 5,
+      6: $base-border-radius * 6,
     ),
   ),
   "overflow": (
-    "prefix": "overflow",
-    "values": (
-      "auto": auto,
-      "hidden": hidden,
-      "clip": clip,
-      "visible": visible,
-      "scroll": scroll,
+    prefix: overflow,
+    values: (
+      auto: auto,
+      hidden: hidden,
+      clip: clip,
+      visible: visible,
+      scroll: scroll,
     ),
   ),
   "overflow-x": (
-    "prefix": "overflow-x",
-    "values": (
-      "auto": auto,
-      "hidden": hidden,
-      "clip": clip,
-      "visible": visible,
-      "scroll": scroll,
+    prefix: overflow-x,
+    values: (
+      auto: auto,
+      hidden: hidden,
+      clip: clip,
+      visible: visible,
+      scroll: scroll,
     ),
   ),
   "overflow-y": (
-    "prefix": "overflow-y",
-    "values": (
-      "auto": auto,
-      "hidden": hidden,
-      "clip": clip,
-      "visible": visible,
-      "scroll": scroll,
+    prefix: overflow-y,
+    values: (
+      auto: auto,
+      hidden: hidden,
+      clip: clip,
+      visible: visible,
+      scroll: scroll,
     ),
   ),
   "position": (
-    "values": (
-      "static": static,
-      "fixed": fixed,
-      "absolute": absolute,
-      "relative": relative,
-      "sticky": sticky,
+    values: (
+      static: static,
+      fixed: fixed,
+      absolute: absolute,
+      relative: relative,
+      sticky: sticky,
     ),
   ),
   "top": (
-    "prefix": "top",
-    "values": spacing-function($base-spacing),
+    prefix: top,
+    values: spacing-function($base-spacing),
   ),
   "bottom": (
-    "prefix": "bottom",
-    "values": spacing-function($base-spacing),
+    prefix: bottom,
+    values: spacing-function($base-spacing),
   ),
   "left": (
-    "prefix": "left",
-    "values": spacing-function($base-spacing),
+    prefix: left,
+    values: spacing-function($base-spacing),
   ),
   "right": (
-    "prefix": "right",
-    "values": spacing-function($base-spacing),
+    prefix: right,
+    values: spacing-function($base-spacing),
   ),
-);
+  "width": (
+    prefix: w,
+    values: (
+      full: 100%,
+      screen: 100vh,
+      svw: 100svw,
+      lvw: 100lvw,
+      dvw: 100dvw,
+      min: min-content,
+      max: max-content,
+      fit: fit-content,
+    ),
+  ),
+  "min-width": (
+    prefix: min-w,
+    values: (
+      full: 100%,
+      min: min-content,
+      max: max-content,
+      fit: fit-content,
+    ),
+  ),
+  "max-width": (
+    prefix: max-w,
+    values: (
+      full: 100%,
+      min: min-content,
+      max: max-content,
+      fit: fit-content,
+      sm: map-get($breakpoints, sm),
+      md: map-get($breakpoints, md),
+      lg: map-get($breakpoints, lg),
+      xl: map-get($breakpoints, xl),
+      xxl: map-get($breakpoints, xxl),
+    ),
+  ),
+  "height": (
+    prefix: h,
+    values: (
+      full: 100%,
+      screen: 100vh,
+      svw: 100svw,
+      lvw: 100lvw,
+      dvw: 100dvw,
+      min: min-content,
+      max: max-content,
+      fit: fit-content,
+    ),
+  ),
+  "min-height": (
+    prefix: min-h,
+    values: (
+      full: 100%,
+      screen: 100vh,
+      svw: 100svw,
+      lvw: 100lvw,
+      dvw: 100dvw,
+      min: min-content,
+      max: max-content,
+      fit: fit-content,
+    ),
+  ),
+  "max-height": (
+    prefix: max-h,
+    values: (
+      full: 100%,
+      screen: 100vh,
+      svw: 100svw,
+      lvw: 100lvw,
+      dvw: 100dvw,
+      min: min-content,
+      max: max-content,
+      fit: fit-content,
+    ),
+  ),
+) !default;
+
+// Merge spacing function with spacing utilities values
+$utilities: merge-utilities-map($utilities, "width", "w");
+$utilities: merge-utilities-map($utilities, "min-width", "min-w");
+$utilities: merge-utilities-map($utilities, "max-width", "max-w");
+$utilities: merge-utilities-map($utilities, "height", "h");
+$utilities: merge-utilities-map($utilities, "min-height", "min-h");
+$utilities: merge-utilities-map($utilities, "max-height", "max-h");
 
 // generate utility classes
 @each $property, $val in $utilities {
