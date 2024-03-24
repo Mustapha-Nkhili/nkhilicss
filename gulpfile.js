@@ -2,7 +2,7 @@ const { src, dest, watch, series } = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
 
 const compileStyles = () =>
-  src("./src/**/*.scss").pipe(sass()).pipe(dest("./dist"));
+  src("./src/**/*.scss").pipe(sass()).pipe(dest("./src"));
 
 const watchTask = () => watch(["./src/**/*.scss"], compileStyles);
 

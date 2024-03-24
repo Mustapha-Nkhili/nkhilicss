@@ -1,6 +1,183 @@
-@use 'sass:math';
+@use "sass:math";
 
 $grid-columns: 12 !default;
+
+$grid-system-utilities: (
+  "flex-basis": (
+    prefix: basis,
+    values: spacing-function(),
+  ),
+  "flex-direction": (
+    prefix: flex,
+    values: (
+      row: row,
+      row-reverse: row-reverse,
+      column: column,
+      column-reverse: column-reverse,
+    ),
+  ),
+  "flex": (
+    prefix: flex,
+    values: (
+      fill: 1 1 auto,
+    ),
+  ),
+  "flex-grow": (
+    prefix: flex-grow,
+    values: (
+      1: 1,
+      0: 0,
+    ),
+  ),
+  "flex-shrink": (
+    prefix: flex-shrink,
+    values: (
+      1: 1,
+      0: 0,
+    ),
+  ),
+  "flex-wrap": (
+    prefix: flex,
+    values: (
+      wrap: wrap,
+      wrap-reverse: wrap-reverse,
+      nowrap: nowrap,
+    ),
+  ),
+  "order": (
+    prefix: order,
+    values: (
+      first: -999,
+      0: 0,
+      1: 1,
+      2: 2,
+      3: 3,
+      4: 4,
+      5: 5,
+      6: 6,
+      7: 7,
+      8: 8,
+      9: 9,
+      10: 10,
+      last: 999,
+    ),
+  ),
+  "justify-content": (
+    prefix: justify,
+    values: (
+      flex-start: flex-start,
+      flex-end: flex-end,
+      center: center,
+      between: space-between,
+      around: space-around,
+      evenly: space-evenly,
+      start: start,
+      end: end,
+      left: left,
+      right: right,
+    ),
+  ),
+  "justify-items": (
+    prefix: justify-items,
+    values: (
+      start: start,
+      end: end,
+      center: center,
+      stretch: stretch,
+    ),
+  ),
+  "justify-self": (
+    prefix: self,
+    values: (
+      auto: auto,
+      normal: normal,
+      stretch: stretch,
+      flex-start: flex-start,
+      flex-end: flex-end,
+      center: center,
+      baseline: baseline,
+      start: start,
+      end: end,
+      self-start: self-start,
+      self-end: self-end,
+    ),
+  ),
+  "align-items": (
+    prefix: items,
+    values: (
+      normal: normal,
+      stretch: stretch,
+      flex-start: flex-start,
+      flex-end: flex-end,
+      center: center,
+      baseline: baseline,
+      start: start,
+      end: end,
+      self-start: self-start,
+      self-end: self-end,
+    ),
+  ),
+  "align-content": (
+    prefix: content,
+    values: (
+      normal: normal,
+      flex-start: flex-start,
+      flex-end: flex-end,
+      center: center,
+      between: space-between,
+      around: space-around,
+      evenly: space-evenly,
+      start: start,
+      end: end,
+      left: left,
+      right: right,
+    ),
+  ),
+  "align-self": (
+    prefix: align-self,
+    values: (
+      auto: auto,
+      center: center,
+      start: start,
+      end: end,
+      stretch: stretch,
+      baseline: baseline,
+    ),
+  ),
+  "place-content": (
+    prefix: place-content,
+    values: (
+      center: center,
+      between: space-between,
+      around: space-around,
+      evenly: space-evenly,
+      baseline: baseline,
+      stretch: stretch,
+      start: start,
+      end: end,
+    ),
+  ),
+  "place-items": (
+    prefix: place-items,
+    values: (
+      center: center,
+      baseline: baseline,
+      stretch: stretch,
+      start: start,
+      end: end,
+    ),
+  ),
+  "place-self": (
+    prefix: place-self,
+    values: (
+      center: center,
+      auto: auto,
+      stretch: stretch,
+      start: start,
+      end: end,
+    ),
+  ),
+);
 
 .container {
   width: 100%;
@@ -14,18 +191,49 @@ $grid-columns: 12 !default;
   flex-wrap: wrap;
 }
 
+@each $css-property, $property-value in $grid-system-utilities {
+  $prefix: map-get($property-value, "prefix");
+  $values: map-get($property-value, "values");
+
+  @each $key, $val in $values {
+    .#{$prefix}-#{$key} {
+      #{$css-property}: #{$val};
+    }
+    .hover-#{$prefix}-#{$key} {
+      &:hover {
+        #{$css-property}: #{$val};
+      }
+    }
+  }
+}
+
 @for $i from 1 through $grid-columns {
   .col-#{$i} {
     flex: 0 0 math.div(100%, $grid-columns) * $i;
   }
+  .hover-col-#{$i} {
+    &:hover {
+      flex: 0 0 math.div(100%, $grid-columns) * $i;
+    }
+  }
 }
 
 @each $prefix, $val in $breakpoints {
-    @include responsive-layout($prefix) {
-      @for $i from 1 through $grid-columns {
-        .#{$prefix}-col-#{$i} {
-          flex: 0 0 math.div(100%, $grid-columns) * $i;
+  @include responsive-layout($prefix) {
+    @for $i from 1 through $grid-columns {
+      .#{$prefix}-col-#{$i} {
+        flex: 0 0 math.div(100%, $grid-columns) * $i;
+      }
+    }
+    @each $css-property, $property-value in $grid-system-utilities {
+      $css-prefix: map-get($property-value, "prefix");
+      $values: map-get($property-value, "values");
+
+      @each $key, $val in $values {
+        .#{$prefix}-#{$css-prefix}-#{$key} {
+          #{$css-property}: #{$val};
         }
       }
     }
+  }
 }
