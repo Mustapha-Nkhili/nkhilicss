@@ -2,75 +2,76 @@
 
 // Define utilities map
 $utilities: (
-  "display": (
+  // Layout
+  "display":
+    (
+      values: (
+        flex: flex,
+        inline-flex: inline-flex,
+        block: block,
+        inline: inline,
+        inline-block: inline-block,
+        grid: grid,
+        inline-grid: inline-grid,
+        flow-root: flow-root,
+        d-none: none,
+        contents: contents,
+        table: table,
+        table-row: table-row,
+        list-item: list-item,
+      ),
+    ),
+  "aspect-ratio": (
+    prefix: aspect,
     values: (
-      flex: flex,
-      inline-flex: inline-flex,
-      block: block,
-      inline: inline,
-      inline-block: inline-block,
-      grid: grid,
-      inline-grid: inline-grid,
-      flow-root: flow-root,
-      d-none: none,
-      contents: contents,
-      table: table,
-      table-row: table-row,
-      list-item: list-item,
+      auto: auto,
+      square: calc(1 / 1),
+      video: calc(16 / 9),
+      4x3: calc(3 / 4),
     ),
   ),
-  "padding": (
-    prefix: p,
-    values: spacing-function($base-padding),
-  ),
-  "padding-left": (
-    prefix: pl,
-    values: spacing-function($base-padding),
-  ),
-  "padding-right": (
-    prefix: pr,
-    values: spacing-function($base-padding),
-  ),
-  "padding-top": (
-    prefix: pt,
-    values: spacing-function($base-padding),
-  ),
-  "padding-bottom": (
-    prefix: pb,
-    values: spacing-function($base-padding),
-  ),
-  "margin": (
-    prefix: m,
-    values: spacing-function($base-margin),
-  ),
-  "margin-left": (
-    prefix: ml,
-    values: spacing-function($base-margin),
-  ),
-  "margin-right": (
-    prefix: mr,
-    values: spacing-function($base-margin),
-  ),
-  "margin-top": (
-    prefix: mt,
-    values: spacing-function($base-margin),
-  ),
-  "margin-bottom": (
-    prefix: mb,
-    values: spacing-function($base-margin),
-  ),
-  "border-radius": (
-    prefix: rounded,
+  "object-fit": (
+    prefix: object,
     values: (
-      none: 0,
-      default: $base-border-radius,
-      full: 50%,
-      2: $base-border-radius * 2,
-      3: $base-border-radius * 3,
-      4: $base-border-radius * 4,
-      5: $base-border-radius * 5,
-      6: $base-border-radius * 6,
+      cover: cover,
+      contain: contain,
+      fill: fill,
+      none: none,
+      scale-down: scale-down,
     ),
+  ),
+  "box-sizing": (
+    prefix: box,
+    values: (
+      border: border-box,
+      content: content-box,
+    ),
+  ),
+  "float": (
+    prefix: float,
+    values: (
+      start: inline-start,
+      end: inline-end,
+      right: right,
+      left: left,
+      none: none,
+    ),
+  ),
+  "top": (
+    prefix: top,
+    values: spacing-function($base-spacing),
+  ),
+  "bottom": (
+    prefix: bottom,
+    values: spacing-function($base-spacing),
+  ),
+  "left": (
+    prefix: left,
+    values: spacing-function($base-spacing),
+  ),
+  "right": (
+    prefix: right,
+    values: spacing-function($base-spacing),
   ),
   "overflow": (
     prefix: overflow,
@@ -111,35 +112,91 @@ $utilities: (
       sticky: sticky,
     ),
   ),
-  "top": (
-    prefix: top,
-    values: spacing-function($base-spacing),
-  ),
-  "bottom": (
-    prefix: bottom,
-    values: spacing-function($base-spacing),
-  ),
-  "left": (
-    prefix: left,
-    values: spacing-function($base-spacing),
-  ),
-  "right": (
-    prefix: right,
-    values: spacing-function($base-spacing),
-  ),
-  "width": (
-    prefix: w,
+  "visibility": (
     values: (
-      full: 100%,
-      screen: 100vh,
-      svw: 100svw,
-      lvw: 100lvw,
-      dvw: 100dvw,
-      min: min-content,
-      max: max-content,
-      fit: fit-content,
+      visible: visible,
+      invisible: hidden,
+      collapse: collapse,
     ),
   ),
+  "z-index": (
+    prefix: z,
+    values: (
+      "auto": "auto",
+      0: 0,
+      1: 1,
+      2: 2,
+      3: 3,
+      4: 4,
+      5: 5,
+      6: 6,
+      7: 7,
+      8: 8,
+      9: 9,
+      10: 10,
+      20: 20,
+      30: 30,
+      40: 40,
+      50: 50,
+    ),
+  ),
+  // Spacing
+  "padding":
+    (
+      prefix: p,
+      values: spacing-function($base-padding),
+    ),
+  "padding-left": (
+    prefix: pl,
+    values: spacing-function($base-padding),
+  ),
+  "padding-right": (
+    prefix: pr,
+    values: spacing-function($base-padding),
+  ),
+  "padding-top": (
+    prefix: pt,
+    values: spacing-function($base-padding),
+  ),
+  "padding-bottom": (
+    prefix: pb,
+    values: spacing-function($base-padding),
+  ),
+  "margin": (
+    prefix: m,
+    values: spacing-function($base-margin),
+  ),
+  "margin-left": (
+    prefix: ml,
+    values: spacing-function($base-margin),
+  ),
+  "margin-right": (
+    prefix: mr,
+    values: spacing-function($base-margin),
+  ),
+  "margin-top": (
+    prefix: mt,
+    values: spacing-function($base-margin),
+  ),
+  "margin-bottom": (
+    prefix: mb,
+    values: spacing-function($base-margin),
+  ),
+  // Sizing
+  "width":
+    (
+      prefix: w,
+      values: (
+        full: 100%,
+        screen: 100vh,
+        svw: 100svw,
+        lvw: 100lvw,
+        dvw: 100dvw,
+        min: min-content,
+        max: max-content,
+        fit: fit-content,
+      ),
+    ),
   "min-width": (
     prefix: min-w,
     values: (
@@ -202,6 +259,21 @@ $utilities: (
       fit: fit-content,
     ),
   ),
+  // Borders
+  "border-radius":
+    (
+      prefix: rounded,
+      values: (
+        none: 0,
+        default: $base-border-radius,
+        full: 50%,
+        2: $base-border-radius * 2,
+        3: $base-border-radius * 3,
+        4: $base-border-radius * 4,
+        5: $base-border-radius * 5,
+        6: $base-border-radius * 6,
+      ),
+    )
 ) !default;
 
 // Merge spacing function with spacing utilities values

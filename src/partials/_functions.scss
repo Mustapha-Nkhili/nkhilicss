@@ -1,5 +1,6 @@
 @function spacing-function($spacing-base: $base-spacing) {
   @return (
+    auto: auto,
     0: 0,
     px: 1px,
     1: $spacing-base,
