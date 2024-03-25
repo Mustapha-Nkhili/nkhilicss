@@ -1,6 +1,5 @@
 @function spacing-function($spacing-base: $base-spacing) {
   @return (
-    auto: auto,
     0: 0,
     px: 1px,
     1: $spacing-base,
@@ -39,24 +38,5 @@
     92: $spacing-base * 92,
     96: $spacing-base * 96,
     100: $spacing-base * 100
-  );
-}
-
-@function merge-utilities-map($map, $property, $prefix) {
-  // Merge the spacing function with the existing property values
-  $width-values: map-merge(
-    map-get(map-get($map, $property), "values"),
-    spacing-function()
-  );
-
-  // Update the property map with the new values
-  @return map-merge(
-    $map,
-    (
-      $property: (
-        prefix: #{$prefix},
-        values: $width-values,
-      ),
-    )
   );
 }

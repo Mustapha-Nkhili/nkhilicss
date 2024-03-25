@@ -186,77 +186,106 @@ $utilities: (
   "width":
     (
       prefix: w,
-      values: (
-        full: 100%,
-        screen: 100vh,
-        svw: 100svw,
-        lvw: 100lvw,
-        dvw: 100dvw,
-        min: min-content,
-        max: max-content,
-        fit: fit-content,
-      ),
+      values:
+        map-merge(
+          (
+            auto: auto,
+            full: 100%,
+            screen: 100vh,
+            svw: 100svw,
+            lvw: 100lvw,
+            dvw: 100dvw,
+            min: min-content,
+            max: max-content,
+            fit: fit-content,
+          ),
+          spacing-function()
+        ),
     ),
   "min-width": (
     prefix: min-w,
-    values: (
-      full: 100%,
-      min: min-content,
-      max: max-content,
-      fit: fit-content,
-    ),
+    values:
+      map-merge(
+        (
+          full: 100%,
+          min: min-content,
+          max: max-content,
+          fit: fit-content,
+        ),
+        spacing-function()
+      ),
   ),
   "max-width": (
     prefix: max-w,
-    values: (
-      full: 100%,
-      min: min-content,
-      max: max-content,
-      fit: fit-content,
-      sm: map-get($breakpoints, sm),
-      md: map-get($breakpoints, md),
-      lg: map-get($breakpoints, lg),
-      xl: map-get($breakpoints, xl),
-      xxl: map-get($breakpoints, xxl),
-    ),
+    values:
+      map-merge(
+        (
+          full: 100%,
+          min: min-content,
+          max: max-content,
+          fit: fit-content,
+          sm: map-get($breakpoints, sm),
+          md: map-get($breakpoints, md),
+          lg: map-get($breakpoints, lg),
+          xl: map-get($breakpoints, xl),
+          xxl: map-get($breakpoints, xxl),
+          none: none,
+        ),
+        spacing-function()
+      ),
   ),
   "height": (
     prefix: h,
-    values: (
-      full: 100%,
-      screen: 100vh,
-      svw: 100svw,
-      lvw: 100lvw,
-      dvw: 100dvw,
-      min: min-content,
-      max: max-content,
-      fit: fit-content,
-    ),
+    values:
+      map-merge(
+        (
+          auto: auto,
+          full: 100%,
+          screen: 100vh,
+          svw: 100svw,
+          lvw: 100lvw,
+          dvw: 100dvw,
+          min: min-content,
+          max: max-content,
+          fit: fit-content,
+        ),
+        spacing-function()
+      ),
   ),
   "min-height": (
     prefix: min-h,
-    values: (
-      full: 100%,
-      screen: 100vh,
-      svw: 100svw,
-      lvw: 100lvw,
-      dvw: 100dvw,
-      min: min-content,
-      max: max-content,
-      fit: fit-content,
-    ),
+    values:
+      map-merge(
+        (
+          full: 100%,
+          screen: 100vh,
+          svw: 100svw,
+          lvw: 100lvw,
+          dvw: 100dvw,
+          min: min-content,
+          max: max-content,
+          fit: fit-content,
+        ),
+        spacing-function()
+      ),
   ),
   "max-height": (
     prefix: max-h,
     values: (
-      full: 100%,
-      screen: 100vh,
-      svw: 100svw,
-      lvw: 100lvw,
-      dvw: 100dvw,
-      min: min-content,
-      max: max-content,
-      fit: fit-content,
+      map-merge(
+        (
+          full: 100%,
+          screen: 100vh,
+          svw: 100svw,
+          lvw: 100lvw,
+          dvw: 100dvw,
+          min: min-content,
+          max: max-content,
+          fit: fit-content,
+          none: none,
+        ),
+        spacing-function()
+      ),
     ),
   ),
   // Borders
@@ -275,14 +304,6 @@ $utilities: (
       ),
     )
 ) !default;
-
-// Merge spacing function with spacing utilities values
-$utilities: merge-utilities-map($utilities, "width", "w");
-$utilities: merge-utilities-map($utilities, "min-width", "min-w");
-$utilities: merge-utilities-map($utilities, "max-width", "max-w");
-$utilities: merge-utilities-map($utilities, "height", "h");
-$utilities: merge-utilities-map($utilities, "min-height", "min-h");
-$utilities: merge-utilities-map($utilities, "max-height", "max-h");
 
 // generate utility classes
 @each $property, $val in $utilities {
