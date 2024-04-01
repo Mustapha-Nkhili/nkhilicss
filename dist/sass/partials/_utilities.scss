@@ -59,19 +59,47 @@ $utilities: (
   ),
   "top": (
     prefix: top,
-    values: spacing-function($base-spacing),
+    values:
+      map-merge(
+        spacing-function($base-spacing),
+        (
+          auto: auto,
+          full: 100%,
+        )
+      ),
   ),
   "bottom": (
     prefix: bottom,
-    values: spacing-function($base-spacing),
+    values:
+      map-merge(
+        spacing-function($base-spacing),
+        (
+          auto: auto,
+          full: 100%,
+        )
+      ),
   ),
   "left": (
     prefix: left,
-    values: spacing-function($base-spacing),
+    values:
+      map-merge(
+        spacing-function($base-spacing),
+        (
+          auto: auto,
+          full: 100%,
+        )
+      ),
   ),
   "right": (
     prefix: right,
-    values: spacing-function($base-spacing),
+    values:
+      map-merge(
+        spacing-function($base-spacing),
+        (
+          auto: auto,
+          full: 100%,
+        )
+      ),
   ),
   "overflow": (
     prefix: overflow,
@@ -122,7 +150,7 @@ $utilities: (
   "z-index": (
     prefix: z,
     values: (
-      "auto": "auto",
+      auto: auto,
       0: 0,
       1: 1,
       2: 2,
@@ -164,23 +192,53 @@ $utilities: (
   ),
   "margin": (
     prefix: m,
-    values: spacing-function($base-margin),
+    values:
+      map-merge(
+        spacing-function($base-margin),
+        (
+          auto: auto,
+        )
+      ),
   ),
   "margin-left": (
     prefix: ml,
-    values: spacing-function($base-margin),
+    values:
+      map-merge(
+        spacing-function($base-margin),
+        (
+          auto: auto,
+        )
+      ),
   ),
   "margin-right": (
     prefix: mr,
-    values: spacing-function($base-margin),
+    values:
+      map-merge(
+        spacing-function($base-margin),
+        (
+          auto: auto,
+        )
+      ),
   ),
   "margin-top": (
     prefix: mt,
-    values: spacing-function($base-margin),
+    values:
+      map-merge(
+        spacing-function($base-margin),
+        (
+          auto: auto,
+        )
+      ),
   ),
   "margin-bottom": (
     prefix: mb,
-    values: spacing-function($base-margin),
+    values:
+      map-merge(
+        spacing-function($base-margin),
+        (
+          auto: auto,
+        )
+      ),
   ),
   // Sizing
   "width":
@@ -271,7 +329,7 @@ $utilities: (
   ),
   "max-height": (
     prefix: max-h,
-    values: (
+    values:
       map-merge(
         (
           full: 100%,
@@ -286,7 +344,6 @@ $utilities: (
         ),
         spacing-function()
       ),
-    ),
   ),
   // Borders
   "border-radius":
