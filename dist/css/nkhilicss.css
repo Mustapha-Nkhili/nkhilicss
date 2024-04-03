@@ -19,6 +19,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
+
 img,
 picture,
 video,
@@ -27,12 +28,14 @@ svg {
   display: block;
   max-width: 100%;
 }
+
 input,
 button,
 textarea,
 select {
   font: inherit;
 }
+
 p,
 h1,
 h2,
@@ -331,6 +334,7 @@ ul {
 .hover-bg-primary-dark-7:hover {
   background-color: #0f2147;
 }
+
 .text-primary-dark-8 {
   color: #0a1630;
 }
