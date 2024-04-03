@@ -12,6 +12,12 @@
     "web"
   ],
   "author": "Mustapha Nkhili (https://github.com/Mustapha-Nkhili/)",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/Mustapha-Nkhili/nkhilicss"
+  },
+  "sass": "sass/index.scss",
+  "style": "dist/css/nkhilicss.css",
   "scripts": {
     "minify-css": "gulp minify-css",
     "compile-css": "gulp compile-css"
