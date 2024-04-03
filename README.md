@@ -60,4 +60,4 @@ Contributions are welcome! If you find any bugs or have suggestions for improvem
 
 ## License
 
-NkhiliCSS is open-source software licensed under the MIT License. See the [LICENSE](https://github.com/Mustapha-Nkhili/nkhilicss/LICENSE) file for more information.
+NkhiliCSS is open-source software licensed under the MIT License. See the [LICENSE](https://github.com/Mustapha-Nkhili/nkhilicss/blob/main/LICENSE) file for more information.
