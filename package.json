@@ -12,6 +12,10 @@
     "web"
   ],
   "author": "Mustapha Nkhili (https://github.com/Mustapha-Nkhili/)",
+  "scripts": {
+    "minify-css": "gulp minify-css",
+    "compile-css": "gulp compile-css"
+  },
   "dependencies": {
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.3.0",
