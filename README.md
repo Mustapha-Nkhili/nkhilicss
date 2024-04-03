@@ -34,9 +34,10 @@ Simply include the NkhiliCSS file in your HTML file and start using its classes 
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My NkhiliCSS Project</title>
-    <!-- Note: Currently using the regular CSS file. In the future, a minified version will also be available. -->
-    <link rel="stylesheet" href="node_modules/nkhilicss.css" />
+    <link
+      rel="stylesheet"
+      href="node_modules/nhkilicss/dist/css/nkhilicss.min.css"
+    />
   </head>
   <body>
     <div class="container">
