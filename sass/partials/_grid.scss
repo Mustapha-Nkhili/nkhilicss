@@ -177,6 +177,10 @@ $grid-system-utilities: (
       end: end,
     ),
   ),
+  "gap": (
+    prefix: gap,
+    values: spacing-function(),
+  ),
 ) !default;
 
 .container {
