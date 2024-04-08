@@ -17,7 +17,15 @@
   }
 
   //   light variations
-  @if $val != white and $val != black {
+  @if $val !=
+    white and
+    $val !=
+    black and
+    $val !=
+    transparent and
+    $val !=
+    inherit
+  {
     @for $i from 1 through 9 {
       .text-#{$key}-light-#{$i} {
         color: mix(white, $val, $i * 10%);
