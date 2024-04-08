@@ -345,6 +345,207 @@ $utilities: (
         spacing-function()
       ),
   ),
+  // Typography
+  "font-family":
+    (
+      prefix: font,
+      values: (
+        sans-serif: $font-sans-serif,
+        serif: $font-serif,
+        monospace: $font-monospace,
+        arial: $font-arial,
+      ),
+    ),
+  "font-size": (
+    prefix: text,
+    values: (
+      base: $font-size-base,
+      xs: $font-size-xs,
+      sm: $font-size-sm,
+      lg: $font-size-lg,
+      xl: $font-size-xl,
+      2xl: $font-size-2xl,
+      3xl: $font-size-3xl,
+      4xl: $font-size-4xl,
+      5xl: $font-size-5xl,
+      6xl: $font-size-6xl,
+      7xl: $font-size-7xl,
+      8xl: $font-size-8xl,
+      9xl: $font-size-9xl,
+      h1: $font-size-h1,
+      h2: $font-size-h2,
+      h3: $font-size-h3,
+      h4: $font-size-h4,
+      h5: $font-size-h5,
+      h6: $font-size-h6,
+    ),
+  ),
+  "font-style": (
+    prefix: font-style,
+    values: (
+      italic: italic,
+      normal: normal,
+    ),
+  ),
+  "font-weight": (
+    prefix: font,
+    values: (
+      lighter: $font-weight-lighter,
+      light: $font-weight-light,
+      normal: $font-weight-normal,
+      medium: $font-weight-medium,
+      semibold: $font-weight-semibold,
+      bold: $font-weight-bold,
+      bolder: $font-weight-bolder,
+    ),
+  ),
+  "letter-spacing": (
+    prefix: letter-spacing,
+    values: (
+      tighter: $letter-spacing-tighter,
+      tight: $letter-spacing-tight,
+      normal: $letter-spacing-normal,
+      wide: $letter-spacing-wide,
+      wider: $letter-spacing-wider,
+      widest: $letter-spacing-widest,
+    ),
+  ),
+  "line-height": (
+    prefix: line-height,
+    values: (
+      none: 1,
+      sm: $line-height-sm,
+      normal: $line-height-normal,
+      lg: $line-height-lg,
+      1: $line-height-1,
+      2: $line-height-2,
+      3: $line-height-3,
+      4: $line-height-4,
+      5: $line-height-5,
+      6: $line-height-6,
+      7: $line-height-7,
+      8: $line-height-8,
+      9: $line-height-9,
+      10: $line-height-10,
+    ),
+  ),
+  "list-style-position": (
+    prefix: list-style,
+    values: (
+      inside: inside,
+      outside: outside,
+    ),
+  ),
+  "list-style-type": (
+    prefix: list-style,
+    values: (
+      none: none,
+      disc: disc,
+      decimal: decimal,
+    ),
+  ),
+  "text-align": (
+    prefix: text,
+    values: (
+      left: left,
+      center: center,
+      right: right,
+      justify: justify,
+      start: start,
+      end: end,
+    ),
+  ),
+  "text-decoration-line": (
+    prefix: text-dec,
+    values: (
+      underline: underline,
+      overline: overline,
+      line-through: line-through,
+      none: none,
+    ),
+  ),
+  "text-decoration-color": (
+    prefix: text-dec,
+    values: $colors,
+  ),
+  "text-decoration-thickness": (
+    prefix: text-dec,
+    values: (
+      auto: auto,
+      from-font: from-font,
+      0: $text-decoration-thickness-0,
+      1: $text-decoration-thickness-1,
+      2: $text-decoration-thickness-2,
+      3: $text-decoration-thickness-3,
+      4: $text-decoration-thickness-4,
+      5: $text-decoration-thickness-5,
+      6: $text-decoration-thickness-6,
+      7: $text-decoration-thickness-7,
+      8: $text-decoration-thickness-8,
+      9: $text-decoration-thickness-9,
+      10: $text-decoration-thickness-10,
+    ),
+  ),
+  "text-underline-offset": (
+    prefix: text-underline-offset,
+    values: (
+      auto: auto,
+      0: $text-underline-offset-0,
+      1: $text-underline-offset-1,
+      2: $text-underline-offset-2,
+      3: $text-underline-offset-3,
+      4: $text-underline-offset-4,
+      5: $text-underline-offset-5,
+      8: $text-underline-offset-8,
+    ),
+  ),
+  "text-transform": (
+    values: (
+      uppercase: uppercase,
+      lowercase: lowercase,
+      capitalize: capitalize,
+      normal-case: none,
+    ),
+  ),
+  "text-overflow": (
+    prefix: text,
+    values: (
+      ellipsis: ellipsis,
+      clip: clip,
+    ),
+  ),
+  "text-wrap": (
+    prefix: text,
+    values: (
+      wrap: wrap,
+      nowrap: nowrap,
+      balance: balance,
+      pretty: pretty,
+    ),
+  ),
+  "text-indent": (
+    prefix: text-indent,
+    values: spacing-function(),
+  ),
+  "white-space": (
+    prefix: white-space,
+    values: (
+      normal: normal,
+      nowrap: nowrap,
+      pre: pre,
+      pre-line: pre-line,
+      pre-wrap: pre-wrap,
+      break-spaces: break-spaces,
+    ),
+  ),
+  "hyphens": (
+    prefix: hyphens,
+    values: (
+      none: none,
+      manual: manual,
+      auto: auto,
+    ),
+  ),
   // Borders
   "border-radius":
     (
