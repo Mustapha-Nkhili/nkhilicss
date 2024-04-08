@@ -27,7 +27,7 @@ You can include NkhiliCSS via CDN by adding the following link to your HTML file
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/nkhilicss@1.1.0/dist/css/nkhilicss.min.css"
+  href="https://cdn.jsdelivr.net/npm/nkhilicss@1.1.1/dist/css/nkhilicss.min.css"
 />
 ```
 
