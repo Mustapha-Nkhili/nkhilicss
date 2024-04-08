@@ -1,15 +1,17 @@
-// theme colors
+// Theme Colors
 $primary: #326dee !default;
 $secondary: #1ac886 !default;
 $error: #d32752 !default;
 $info: #f6c31c !default;
 
-// color palette
+// Color Palette
 $colors: (
   "primary": $primary,
   "secondary": $secondary,
   "error": $error,
   "info": $info,
+  "transparent": transparent,
+  "inherit": inherit,
   "blue": #1919e6,
   "red": #e61919,
   "yellow": #e6e619,
@@ -21,7 +23,7 @@ $colors: (
   "white": white,
 ) !default;
 
-// spacing
+// Spacing
 $base-padding: 0.25rem !default; // 4px
 $base-margin: 0.25rem !default; // 4px
 $base-spacing: 0.25rem !default; // 4px
@@ -67,6 +69,90 @@ $spacing-values: (
   100: $base-spacing * 100,
 ) !default;
 
-// borders
+// Borders
 $base-border-thickness: 1px !default;
 $base-border-radius: 4px !default;
+
+// Fonts
+
+// Font-Family
+$font-sans-serif: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif !default;
+$font-monospace: ui-monospace, "Courier New", Courier, monospace !default;
+$font-arial: Arial, "Franklin Gothic Medium", "Arial Narrow", sans-serif !default;
+
+// Font-Size
+$font-size-base: 1rem !default;
+$font-size-xs: $font-size-base * 0.75 !default;
+$font-size-sm: $font-size-base * 0.875 !default;
+$font-size-lg: $font-size-base * 1.125 !default;
+$font-size-xl: $font-size-base * 1.25 !default;
+$font-size-2xl: $font-size-base * 1.5 !default;
+$font-size-3xl: $font-size-base * 1.875 !default;
+$font-size-4xl: $font-size-base * 2.25 !default;
+$font-size-5xl: $font-size-base * 3 !default;
+$font-size-6xl: $font-size-base * 3.75 !default;
+$font-size-7xl: $font-size-base * 4.5 !default;
+$font-size-8xl: $font-size-base * 6 !default;
+$font-size-9xl: $font-size-base * 7 !default;
+$font-size-h1: 2rem !default; // 32px
+$font-size-h2: 1.5rem !default; // 24px
+$font-size-h3: 1.3rem !default; // 20.8px
+$font-size-h4: 1rem !default; // 16px
+$font-size-h5: 0.8rem !default; // 12.8px
+$font-size-h6: 0.7rem !default; // 11.2px
+
+// Font-Weight
+$font-weight-lighter: lighter !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold: 700 !default;
+$font-weight-bolder: bolder !default;
+
+// Letter Spacing
+$letter-spacing-tighter: -0.05em !default;
+$letter-spacing-tight: -0.025em !default;
+$letter-spacing-normal: 0em !default;
+$letter-spacing-wide: 0.025em !default;
+$letter-spacing-wider: 0.05em !default;
+$letter-spacing-widest: 0.1em !default;
+
+// Line Height
+$line-height-sm: 1.25 !default;
+$line-height-normal: normal !default;
+$line-height-lg: 2 !default;
+$line-height-1: 0.75rem !default;
+$line-height-2: 1rem !default;
+$line-height-3: 1.25rem !default;
+$line-height-4: 1.5rem !default;
+$line-height-5: 1.75rem !default;
+$line-height-6: 2rem !default;
+$line-height-7: 2.25rem !default;
+$line-height-8: 2.5rem !default;
+$line-height-9: 3rem !default;
+$line-height-10: 3.25rem !default;
+
+// Text Decoration Thickness
+$text-decoration-thickness-0: 0px !default;
+$text-decoration-thickness-1: 1px !default;
+$text-decoration-thickness-2: 2px !default;
+$text-decoration-thickness-3: 3px !default;
+$text-decoration-thickness-4: 4px !default;
+$text-decoration-thickness-5: 5px !default;
+$text-decoration-thickness-6: 6px !default;
+$text-decoration-thickness-7: 7px !default;
+$text-decoration-thickness-8: 8px !default;
+$text-decoration-thickness-9: 9px !default;
+$text-decoration-thickness-10: 10px !default;
+
+// Text Underline Offset
+$text-underline-offset-0: 0px !default;
+$text-underline-offset-1: 1px !default;
+$text-underline-offset-2: 2px !default;
+$text-underline-offset-3: 3px !default;
+$text-underline-offset-4: 4px !default;
+$text-underline-offset-5: 5px !default;
+$text-underline-offset-8: 8px !default;
