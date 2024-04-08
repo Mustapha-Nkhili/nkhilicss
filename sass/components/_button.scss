@@ -23,10 +23,12 @@
   -webkit-user-select: none;
   touch-action: manipulation;
 
-  &:hover {
-    background-color: lighten($bg-color, 5);
+  @if ($bg-color != inherit) {
+    &:hover {
+      background-color: lighten($bg-color, 5);
+    }
   }
-
+  
   &:active {
     box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%),
       0 8px 12px 6px rgb(60 64 67 / 15%);
