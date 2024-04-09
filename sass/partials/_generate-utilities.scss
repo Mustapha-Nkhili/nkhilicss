@@ -1,0 +1,78 @@
+// generate utility classes
+@each $property, $val in $utilities {
+  $prefix: map-get($val, "prefix");
+  $values: map-get($val, "values");
+
+  @each $keyValue, $value in $values {
+    @if ($prefix) {
+      @if ($keyValue == "default") {
+        .#{$prefix} {
+          #{$property}: $value;
+        }
+        .hover-#{$prefix} {
+          &:hover {
+            #{$property}: $value;
+          }
+        }
+        @each $responsive-prefix, $val in $breakpoints {
+          @include responsive-layout($responsive-prefix) {
+            .#{$responsive-prefix}-#{$prefix} {
+              #{$property}: $value;
+            }
+          }
+        }
+      } @else {
+        .#{$prefix}-#{$keyValue} {
+          #{$property}: $value;
+        }
+        .hover-#{$prefix}-#{$keyValue} {
+          &:hover {
+            #{$property}: $value;
+          }
+        }
+        @each $responsive-prefix, $val in $breakpoints {
+          @include responsive-layout($responsive-prefix) {
+            .#{$responsive-prefix}-#{$prefix}-#{$keyValue} {
+              #{$property}: $value;
+            }
+          }
+        }
+      }
+    } @else {
+      .#{$keyValue} {
+        #{$property}: $value;
+      }
+      .hover-#{$keyValue} {
+        &:hover {
+          #{$property}: $value;
+        }
+      }
+      @each $responsive-prefix, $val in $breakpoints {
+        @include responsive-layout($responsive-prefix) {
+          .#{$responsive-prefix}-#{$keyValue} {
+            #{$property}: $value;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Generate Color variations
+@each $key, $val in $colors {
+  @if $val !=
+    white and
+    $val !=
+    black and
+    $val !=
+    transparent and
+    $val !=
+    inherit
+  {
+    //   light variations
+    @include generate-color-variations($key, $val, "light");
+
+    //  dark variations
+    @include generate-color-variations($key, $val, "dark");
+  }
+}
