@@ -8,8 +8,8 @@
 // layouts
 @import "./partials/breakpoints";
 
-// colors
-@import "./partials/colors";
+// mixins
+@import "./partials/mixins";
 
 // components
 @import "./components/button";
@@ -17,3 +17,6 @@
 // utilities
 @import "./partials/utilities";
 @import "./partials/grid";
+
+// generate utilities
+@import "./partials/generate-utilities";
