@@ -455,6 +455,10 @@ $utilities: (
       end: end,
     ),
   ),
+  "color": (
+    prefix: text,
+    values: $colors,
+  ),
   "text-decoration-line": (
     prefix: text-dec,
     values: (
@@ -546,6 +550,62 @@ $utilities: (
       auto: auto,
     ),
   ),
+  // Backgrounds
+  "background-attachment":
+    (
+      prefix: bg,
+      values: (
+        fixed: fixed,
+        local: local,
+        auto: auto,
+      ),
+    ),
+  "background-clip": (
+    prefix: bg-clip,
+    values: (
+      border: border-box,
+      padding: padding-box,
+      content: content-box,
+      text: text,
+    ),
+  ),
+  "background-color": (
+    prefix: bg,
+    values: $colors,
+  ),
+  "background-position": (
+    prefix: bg,
+    values: (
+      top: top,
+      center: center,
+      left: left,
+      left-bottom: left bottom,
+      left-top: left top,
+      right: right,
+      right-bottom: right bottom,
+      right-top: right top,
+      bottom: bottom,
+    ),
+  ),
+  "background-repeat": (
+    prefix: bg,
+    values: (
+      repeat: repeat,
+      no-repeat: no-repeat,
+      repeat-x: repeat-x,
+      repeat-y: repeat-y,
+      repeat-round: round,
+      repeat-space: space,
+    ),
+  ),
+  "background-size": (
+    prefix: bg,
+    values: (
+      auto: auto,
+      cover: cover,
+      contain: contain,
+    ),
+  ),
   // Borders
   "border-radius":
     (
@@ -562,63 +622,3 @@ $utilities: (
       ),
     )
 ) !default;
-
-// generate utility classes
-@each $property, $val in $utilities {
-  $prefix: map-get($val, "prefix");
-  $values: map-get($val, "values");
-
-  @each $keyValue, $value in $values {
-    @if ($prefix) {
-      @if ($keyValue == "default") {
-        .#{$prefix} {
-          #{$property}: $value;
-        }
-        .hover-#{$prefix} {
-          &:hover {
-            #{$property}: $value;
-          }
-        }
-        @each $responsive-prefix, $val in $breakpoints {
-          @include responsive-layout($responsive-prefix) {
-            .#{$responsive-prefix}-#{$prefix} {
-              #{$property}: $value;
-            }
-          }
-        }
-      } @else {
-        .#{$prefix}-#{$keyValue} {
-          #{$property}: $value;
-        }
-        .hover-#{$prefix}-#{$keyValue} {
-          &:hover {
-            #{$property}: $value;
-          }
-        }
-        @each $responsive-prefix, $val in $breakpoints {
-          @include responsive-layout($responsive-prefix) {
-            .#{$responsive-prefix}-#{$prefix}-#{$keyValue} {
-              #{$property}: $value;
-            }
-          }
-        }
-      }
-    } @else {
-      .#{$keyValue} {
-        #{$property}: $value;
-      }
-      .hover-#{$keyValue} {
-        &:hover {
-          #{$property}: $value;
-        }
-      }
-      @each $responsive-prefix, $val in $breakpoints {
-        @include responsive-layout($responsive-prefix) {
-          .#{$responsive-prefix}-#{$keyValue} {
-            #{$property}: $value;
-          }
-        }
-      }
-    }
-  }
-}
