@@ -226,7 +226,7 @@ $grid-system-utilities: (
   @include responsive-layout($prefix) {
     @for $i from 1 through $grid-columns {
       .#{$prefix}-col-#{$i} {
-        flex: 0 0 math.div(100%, $grid-columns) * $i;
+        flex: 0 0 math.div(100%, $grid-columns) * $i !important;
       }
     }
     @each $css-property, $property-value in $grid-system-utilities {
@@ -235,7 +235,7 @@ $grid-system-utilities: (
 
       @each $key, $val in $values {
         .#{$prefix}-#{$css-prefix}-#{$key} {
-          #{$css-property}: #{$val};
+          #{$css-property}: #{$val} !important;
         }
       }
     }

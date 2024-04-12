@@ -17,7 +17,7 @@
         @each $responsive-prefix, $val in $breakpoints {
           @include responsive-layout($responsive-prefix) {
             .#{$responsive-prefix}-#{$prefix} {
-              #{$property}: $value;
+              #{$property}: $value !important;
             }
           }
         }
@@ -33,7 +33,7 @@
         @each $responsive-prefix, $val in $breakpoints {
           @include responsive-layout($responsive-prefix) {
             .#{$responsive-prefix}-#{$prefix}-#{$keyValue} {
-              #{$property}: $value;
+              #{$property}: $value !important;
             }
           }
         }
@@ -50,7 +50,7 @@
       @each $responsive-prefix, $val in $breakpoints {
         @include responsive-layout($responsive-prefix) {
           .#{$responsive-prefix}-#{$keyValue} {
-            #{$property}: $value;
+            #{$property}: $value !important;
           }
         }
       }

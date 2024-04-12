@@ -23,7 +23,7 @@
     @each $responsive-prefix, $value in $breakpoints {
       @include responsive-layout($responsive-prefix) {
         .#{$responsive-prefix}-text-#{$key}-#{$variation}-#{$i} {
-          color: mix(white, $val, $i * 10%);
+          color: mix(white, $val, $i * 10%) !important;
         }
       }
     }
@@ -38,7 +38,7 @@
     @each $responsive-prefix, $value in $breakpoints {
       @include responsive-layout($responsive-prefix) {
         .#{$responsive-prefix}-bg-#{$key}-#{$variation}-#{$i} {
-          background-color: mix(white, $val, $i * 10%);
+          background-color: mix(white, $val, $i * 10%) !important;
         }
       }
     }
