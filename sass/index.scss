@@ -1,22 +1,23 @@
 // variables & functions
-@import "./partials/variables";
-@import "./partials/functions";
+@forward "partials/variables";
+@forward "partials/functions";
 
 // base
-@import "./partials/base";
+@forward "partials/base";
 
 // layouts
-@import "./partials/breakpoints";
+@forward "partials/breakpoints";
 
-// mixins
-@import "./partials/mixins";
+// maps  & mixins
+@forward "partials/utilities-maps";
+@forward "partials/mixins";
 
 // components
-@import "./components/button";
+@forward "components/button";
 
 // utilities
-@import "./partials/utilities";
-@import "./partials/grid";
+@forward "partials/utilities";
+@forward "partials/grid";
 
 // generate utilities
-@import "./partials/generate-utilities";
+@forward "partials/generate-utilities";
