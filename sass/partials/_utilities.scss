@@ -1,5 +1,9 @@
 @use "sass:map";
 
+@use "functions" as *;
+@use "utilities-maps" as *;
+@use "variables" as *;
+
 // Define utilities map
 $utilities: (
   // Layout
@@ -23,12 +27,7 @@ $utilities: (
     ),
   "aspect-ratio": (
     prefix: aspect,
-    values: (
-      auto: auto,
-      square: calc(1 / 1),
-      video: calc(16 / 9),
-      4x3: calc(3 / 4),
-    ),
+    values: $aspect-ratio-map,
   ),
   "object-fit": (
     prefix: object,
@@ -59,47 +58,19 @@ $utilities: (
   ),
   "top": (
     prefix: top,
-    values:
-      map-merge(
-        spacing-function($base-spacing),
-        (
-          auto: auto,
-          full: 100%,
-        )
-      ),
+    values: $spacing-map,
   ),
   "bottom": (
     prefix: bottom,
-    values:
-      map-merge(
-        spacing-function($base-spacing),
-        (
-          auto: auto,
-          full: 100%,
-        )
-      ),
+    values: $spacing-map,
   ),
   "left": (
     prefix: left,
-    values:
-      map-merge(
-        spacing-function($base-spacing),
-        (
-          auto: auto,
-          full: 100%,
-        )
-      ),
+    values: $spacing-map,
   ),
   "right": (
     prefix: right,
-    values:
-      map-merge(
-        spacing-function($base-spacing),
-        (
-          auto: auto,
-          full: 100%,
-        )
-      ),
+    values: $spacing-map,
   ),
   "overflow": (
     prefix: overflow,
@@ -149,236 +120,117 @@ $utilities: (
   ),
   "z-index": (
     prefix: z,
-    values: (
-      auto: auto,
-      0: 0,
-      1: 1,
-      2: 2,
-      3: 3,
-      4: 4,
-      5: 5,
-      6: 6,
-      7: 7,
-      8: 8,
-      9: 9,
-      10: 10,
-      20: 20,
-      30: 30,
-      40: 40,
-      50: 50,
-    ),
+    values: $z-index-map,
   ),
   // Spacing
   "padding":
     (
       prefix: p,
-      values: spacing-function($base-padding),
+      values: $padding-map,
     ),
   "padding-left": (
     prefix: pl,
-    values: spacing-function($base-padding),
+    values: $padding-map,
   ),
   "padding-right": (
     prefix: pr,
-    values: spacing-function($base-padding),
+    values: $padding-map,
   ),
   "padding-top": (
     prefix: pt,
-    values: spacing-function($base-padding),
+    values: $padding-map,
   ),
   "padding-bottom": (
     prefix: pb,
-    values: spacing-function($base-padding),
+    values: $padding-map,
+  ),
+  "padding-y": (
+    prefix: py,
+    classes: (
+      padding-top,
+      padding-bottom,
+    ),
+    values: $padding-y-map,
+  ),
+  "padding-x": (
+    prefix: px,
+    classes: (
+      padding-left,
+      padding-right,
+    ),
+    values: $padding-x-map,
   ),
   "margin": (
     prefix: m,
-    values:
-      map-merge(
-        spacing-function($base-margin),
-        (
-          auto: auto,
-        )
-      ),
+    values: $margin-map,
   ),
   "margin-left": (
     prefix: ml,
-    values:
-      map-merge(
-        spacing-function($base-margin),
-        (
-          auto: auto,
-        )
-      ),
+    values: $margin-map,
   ),
   "margin-right": (
     prefix: mr,
-    values:
-      map-merge(
-        spacing-function($base-margin),
-        (
-          auto: auto,
-        )
-      ),
+    values: $margin-map,
   ),
   "margin-top": (
     prefix: mt,
-    values:
-      map-merge(
-        spacing-function($base-margin),
-        (
-          auto: auto,
-        )
-      ),
+    values: $margin-map,
   ),
   "margin-bottom": (
     prefix: mb,
-    values:
-      map-merge(
-        spacing-function($base-margin),
-        (
-          auto: auto,
-        )
-      ),
+    values: $margin-map,
+  ),
+  "margin-y": (
+    prefix: my,
+    classes: (
+      margin-top,
+      margin-bottom,
+    ),
+    values: $margin-y-map,
+  ),
+  "margin-x": (
+    prefix: mx,
+    classes: (
+      margin-left,
+      margin-right,
+    ),
+    values: $margin-x-map,
   ),
   // Sizing
   "width":
     (
       prefix: w,
-      values:
-        map-merge(
-          (
-            auto: auto,
-            full: 100%,
-            screen: 100vh,
-            svw: 100svw,
-            lvw: 100lvw,
-            dvw: 100dvw,
-            min: min-content,
-            max: max-content,
-            fit: fit-content,
-          ),
-          spacing-function()
-        ),
+      values: $width-map,
     ),
   "min-width": (
     prefix: min-w,
-    values:
-      map-merge(
-        (
-          full: 100%,
-          min: min-content,
-          max: max-content,
-          fit: fit-content,
-        ),
-        spacing-function()
-      ),
+    values: $min-width-map,
   ),
   "max-width": (
     prefix: max-w,
-    values:
-      map-merge(
-        (
-          full: 100%,
-          min: min-content,
-          max: max-content,
-          fit: fit-content,
-          sm: map-get($breakpoints, sm),
-          md: map-get($breakpoints, md),
-          lg: map-get($breakpoints, lg),
-          xl: map-get($breakpoints, xl),
-          xxl: map-get($breakpoints, xxl),
-          none: none,
-        ),
-        spacing-function()
-      ),
+    values: $max-w-map,
   ),
   "height": (
     prefix: h,
-    values:
-      map-merge(
-        (
-          auto: auto,
-          full: 100%,
-          screen: 100vh,
-          svw: 100svw,
-          lvw: 100lvw,
-          dvw: 100dvw,
-          min: min-content,
-          max: max-content,
-          fit: fit-content,
-        ),
-        spacing-function()
-      ),
+    values: $height-map,
   ),
   "min-height": (
     prefix: min-h,
-    values:
-      map-merge(
-        (
-          full: 100%,
-          screen: 100vh,
-          svw: 100svw,
-          lvw: 100lvw,
-          dvw: 100dvw,
-          min: min-content,
-          max: max-content,
-          fit: fit-content,
-        ),
-        spacing-function()
-      ),
+    values: $min-height-map,
   ),
   "max-height": (
     prefix: max-h,
-    values:
-      map-merge(
-        (
-          full: 100%,
-          screen: 100vh,
-          svw: 100svw,
-          lvw: 100lvw,
-          dvw: 100dvw,
-          min: min-content,
-          max: max-content,
-          fit: fit-content,
-          none: none,
-        ),
-        spacing-function()
-      ),
+    values: $max-height-map,
   ),
   // Typography
   "font-family":
     (
       prefix: font,
-      values: (
-        sans-serif: $font-sans-serif,
-        serif: $font-serif,
-        monospace: $font-monospace,
-        arial: $font-arial,
-      ),
+      values: $font-family-map,
     ),
   "font-size": (
     prefix: text,
-    values: (
-      base: $font-size-base,
-      xs: $font-size-xs,
-      sm: $font-size-sm,
-      lg: $font-size-lg,
-      xl: $font-size-xl,
-      2xl: $font-size-2xl,
-      3xl: $font-size-3xl,
-      4xl: $font-size-4xl,
-      5xl: $font-size-5xl,
-      6xl: $font-size-6xl,
-      7xl: $font-size-7xl,
-      8xl: $font-size-8xl,
-      9xl: $font-size-9xl,
-      h1: $font-size-h1,
-      h2: $font-size-h2,
-      h3: $font-size-h3,
-      h4: $font-size-h4,
-      h5: $font-size-h5,
-      h6: $font-size-h6,
-    ),
+    values: $font-size-map,
   ),
   "font-style": (
     prefix: font-style,
@@ -401,33 +253,11 @@ $utilities: (
   ),
   "letter-spacing": (
     prefix: letter-spacing,
-    values: (
-      tighter: $letter-spacing-tighter,
-      tight: $letter-spacing-tight,
-      normal: $letter-spacing-normal,
-      wide: $letter-spacing-wide,
-      wider: $letter-spacing-wider,
-      widest: $letter-spacing-widest,
-    ),
+    values: $letter-spacing-map,
   ),
   "line-height": (
     prefix: line-height,
-    values: (
-      none: 1,
-      sm: $line-height-sm,
-      normal: $line-height-normal,
-      lg: $line-height-lg,
-      1: $line-height-1,
-      2: $line-height-2,
-      3: $line-height-3,
-      4: $line-height-4,
-      5: $line-height-5,
-      6: $line-height-6,
-      7: $line-height-7,
-      8: $line-height-8,
-      9: $line-height-9,
-      10: $line-height-10,
-    ),
+    values: $line-height-map,
   ),
   "list-style-position": (
     prefix: list-style,
@@ -610,15 +440,299 @@ $utilities: (
   "border-radius":
     (
       prefix: rounded,
-      values: (
-        none: 0,
-        default: $base-border-radius,
-        full: 50%,
-        2: $base-border-radius * 2,
-        3: $base-border-radius * 3,
-        4: $base-border-radius * 4,
-        5: $base-border-radius * 5,
-        6: $base-border-radius * 6,
+      values: $border-radius-map,
+    ),
+  "border-width": (
+    prefix: border,
+    values: $border-width-map,
+  ),
+  "border-color": (
+    prefix: border,
+    values: $colors,
+  ),
+  "border-style": (
+    prefix: border,
+    values: (
+      solid: solid,
+      dashed: dashed,
+      dotted: dotted,
+      double: double,
+      hidden: hidden,
+      none: none,
+    ),
+  ),
+  "border-left-width": (
+    prefix: border-l,
+    values: $border-width-map,
+  ),
+  "border-left-color": (
+    prefix: border-l,
+    values: $colors,
+  ),
+  "border-left-style": (
+    prefix: border-l,
+    values: (
+      solid: solid,
+      dashed: dashed,
+      dotted: dotted,
+      double: double,
+      hidden: hidden,
+      none: none,
+    ),
+  ),
+  "border-right-width": (
+    prefix: border-r,
+    values: $border-width-map,
+  ),
+  "border-right-color": (
+    prefix: border-r,
+    values: $colors,
+  ),
+  "border-right-style": (
+    prefix: border-r,
+    values: (
+      solid: solid,
+      dashed: dashed,
+      dotted: dotted,
+      double: double,
+      hidden: hidden,
+      none: none,
+    ),
+  ),
+  "border-top-width": (
+    prefix: border-t,
+    values: $border-width-map,
+  ),
+  "border-top-color": (
+    prefix: border-t,
+    values: $colors,
+  ),
+  "border-top-style": (
+    prefix: border-t,
+    values: (
+      solid: solid,
+      dashed: dashed,
+      dotted: dotted,
+      double: double,
+      hidden: hidden,
+      none: none,
+    ),
+  ),
+  "border-bottom-width": (
+    prefix: border-b,
+    values: $border-width-map,
+  ),
+  "border-bottom-color": (
+    prefix: border-b,
+    values: $colors,
+  ),
+  "border-bottom-style": (
+    prefix: border-b,
+    values: (
+      solid: solid,
+      dashed: dashed,
+      dotted: dotted,
+      double: double,
+      hidden: hidden,
+      none: none,
+    ),
+  ),
+  "border-collapse": (
+    prefix: border,
+    values: (
+      collapse: collapse,
+      separate: separate,
+    ),
+  ),
+  "outline-width": (
+    prefix: outline,
+    values: $outline-width-map,
+  ),
+  "outline-color": (
+    prefix: outline,
+    values: $colors,
+  ),
+  "outline-style": (
+    prefix: outline,
+    values: (
+      solid: solid,
+      dashed: dashed,
+      dotted: dotted,
+      double: double,
+      hidden: hidden,
+      auto: auto,
+    ),
+  ),
+  "outline-offset": (
+    prefix: outline-offset,
+    values: $outline-width-map,
+  ),
+  // Filters
+  "filter":
+    (
+      prefixes: (
+        blur,
+        brightness,
+        contrast,
+        grayscale,
+        hue-rotate,
+        invert,
+        saturate,
+        sepia,
       ),
-    )
+      values: $filter-map,
+    ),
+  "backdrop-filter": (
+    prefixes: (
+      backdrop-blur,
+      backdrop-brightness,
+      backdrop-contrast,
+      backdrop-grayscale,
+      backdrop-hue-rotate,
+      backdrop-invert,
+      backdrop-saturate,
+      backdrop-sepia,
+    ),
+    values: $backdrop-filter-map,
+  ),
+  "opacity": (
+    prefix: opacity,
+    values: $opacity-map,
+  ),
+
+  // Transitions
+  "transition-property":
+    (
+      prefix: transition,
+      classes: (
+        transition-property,
+        transition-timing-function,
+        transition-duration,
+      ),
+      values: $transition-map,
+    ),
+  "transition-duration": (
+    prefix: duration,
+    values: $transition-duration-map,
+  ),
+  "transition-timing-function": (
+    values: $transition-timing-function-map,
+  ),
+  "transition-delay": (
+    prefix: delay,
+    values: $transition-delay-map,
+  ),
+
+  // Transforms
+  "transform":
+    (
+      prefixes: (
+        scale,
+        scale-x,
+        scale-y,
+        rotate,
+        translate-x,
+        translate-y,
+        skew-x,
+        skew-y,
+      ),
+      values: $transform-map,
+    ),
+  "transform-origin": (
+    prefix: origin,
+    values: (
+      center: center,
+      top: top,
+      top-right: top right,
+      right: right,
+      bottom-right: bottom right,
+      bottom: bottom,
+      bottom-left: bottom-left,
+      left: left,
+      top-left: top left,
+    ),
+  ),
+
+  // Interactivity
+  "accent-color":
+    (
+      prefix: accent,
+      values: $colors,
+    ),
+  "appearance": (
+    prefix: appearance,
+    values: (
+      none: none,
+      auto: auto,
+    ),
+  ),
+  "cursor": (
+    prefix: cursor,
+    values: (
+      auto: auto,
+      default: default,
+      pointer: pointer,
+      wait: wait,
+      text: text,
+      move: move,
+      not-allowed: not-allowed,
+      none: none,
+      context-menu: context-menu,
+      progress: progress,
+      cell: cell,
+      crosshair: crosshair,
+      vertical-text: vertical-text,
+      alias: alias,
+      copy: copy,
+      no-drop: no-drop,
+      grab: grab,
+      grabbing: grabbing,
+      all-scroll: all-scroll,
+    ),
+  ),
+  "caret-color": (
+    prefix: caret,
+    values: $colors,
+  ),
+  "pointer-events": (
+    prefix: pointer-events,
+    values: (
+      none: none,
+      auto: auto,
+    ),
+  ),
+  "resize": (
+    prefix: resize,
+    values: (
+      none: none,
+      y: vertical,
+      x: horizontal,
+      default: both,
+    ),
+  ),
+  "scroll-behavior": (
+    prefix: scroll,
+    values: (
+      auto: auto,
+      smooth: smooth,
+    ),
+  ),
+  "user-select": (
+    prefix: select,
+    values: (
+      none: none,
+      text: text,
+      all: all,
+      auto: auto,
+    ),
+  ),
+  "will-change": (
+    prefix: will-change,
+    values: (
+      scroll: scroll-position,
+      contents: contents,
+      transform: transform,
+      auto: auto,
+    ),
+  )
 ) !default;
