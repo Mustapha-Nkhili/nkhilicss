@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 @function spacing-function($spacing-base: $base-spacing) {
   @return (
     0: 0,
