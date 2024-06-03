@@ -1,56 +1,71 @@
+@use "variables" as *;
+@use "functions" as *;
+@use "breakpoints" as *;
+@use "mixins" as *;
+@use "utilities" as *;
+
+@use "sass:map";
+
 // generate utility classes
 @each $property, $val in $utilities {
   $prefix: map-get($val, "prefix");
   $values: map-get($val, "values");
+  $classes: map-get($val, "classes");
+  $prefixes: map-get($val, "prefixes");
 
   @each $keyValue, $value in $values {
-    @if ($prefix) {
+    @if ($prefix and not $classes) {
+      $cssClass: #{$prefix}-#{$keyValue};
       @if ($keyValue == "default") {
-        .#{$prefix} {
-          #{$property}: $value;
-        }
-        .hover-#{$prefix} {
-          &:hover {
-            #{$property}: $value;
-          }
-        }
-        @each $responsive-prefix, $val in $breakpoints {
-          @include responsive-layout($responsive-prefix) {
-            .#{$responsive-prefix}-#{$prefix} {
-              #{$property}: $value !important;
+        $cssClass: #{$prefix};
+      }
+
+      @include generate-utility($cssClass, $property, $value);
+    } @else if (not $prefixes and not $classes) {
+      @include generate-utility($keyValue, $property, $value);
+    }
+  }
+  @if ($prefixes) {
+    @each $prefix in $prefixes {
+      @each $keyValue, $value in $values {
+        @if ($prefix == $keyValue) {
+          @each $key, $prefixVal in map.get($values, $keyValue) {
+            $cssClass: #{$prefix}-#{$key};
+            @if ($key == "default") {
+              $cssClass: #{$prefix};
             }
-          }
-        }
-      } @else {
-        .#{$prefix}-#{$keyValue} {
-          #{$property}: $value;
-        }
-        .hover-#{$prefix}-#{$keyValue} {
-          &:hover {
-            #{$property}: $value;
-          }
-        }
-        @each $responsive-prefix, $val in $breakpoints {
-          @include responsive-layout($responsive-prefix) {
-            .#{$responsive-prefix}-#{$prefix}-#{$keyValue} {
-              #{$property}: $value !important;
-            }
+            @include generate-utility($cssClass, $property, $prefixVal);
           }
         }
       }
-    } @else {
-      .#{$keyValue} {
-        #{$property}: $value;
+    }
+  }
+
+  @if ($classes) {
+    @each $keyValue, $value in $values {
+      $cssClass: #{$prefix}-#{$keyValue};
+      @if ($keyValue == "default") {
+        $cssClass: #{$prefix};
       }
-      .hover-#{$keyValue} {
+      .#{$cssClass} {
+        @each $property, $propertyValue in $value {
+          #{$property}: $propertyValue;
+        }
+      }
+
+      .hover-#{$cssClass} {
         &:hover {
-          #{$property}: $value;
+          @each $property, $propertyValue in $value {
+            #{$property}: $propertyValue;
+          }
         }
       }
       @each $responsive-prefix, $val in $breakpoints {
         @include responsive-layout($responsive-prefix) {
-          .#{$responsive-prefix}-#{$keyValue} {
-            #{$property}: $value !important;
+          .#{$responsive-prefix}-#{$cssClass} {
+            @each $property, $propertyValue in $value {
+              #{$property}: $propertyValue;
+            }
           }
         }
       }
