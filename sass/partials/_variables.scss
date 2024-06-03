@@ -28,47 +28,6 @@ $base-padding: 0.25rem !default; // 4px
 $base-margin: 0.25rem !default; // 4px
 $base-spacing: 0.25rem !default; // 4px
 
-$spacing-values: (
-  0: 0,
-  px: 1px,
-  1: $base-spacing,
-  2: $base-spacing * 2,
-  3: $base-spacing * 3,
-  4: $base-spacing * 4,
-  5: $base-spacing * 5,
-  6: $base-spacing * 6,
-  7: $base-spacing * 7,
-  8: $base-spacing * 8,
-  9: $base-spacing * 9,
-  10: $base-spacing * 10,
-  11: $base-spacing * 11,
-  12: $base-spacing * 12,
-  14: $base-spacing * 14,
-  16: $base-spacing * 16,
-  18: $base-spacing * 18,
-  20: $base-spacing * 20,
-  24: $base-spacing * 24,
-  28: $base-spacing * 28,
-  32: $base-spacing * 32,
-  36: $base-spacing * 36,
-  40: $base-spacing * 40,
-  44: $base-spacing * 44,
-  48: $base-spacing * 48,
-  52: $base-spacing * 52,
-  56: $base-spacing * 56,
-  60: $base-spacing * 60,
-  64: $base-spacing * 64,
-  68: $base-spacing * 68,
-  72: $base-spacing * 72,
-  76: $base-spacing * 76,
-  80: $base-spacing * 80,
-  84: $base-spacing * 84,
-  88: $base-spacing * 88,
-  92: $base-spacing * 92,
-  96: $base-spacing * 96,
-  100: $base-spacing * 100,
-) !default;
-
 // Borders
 $base-border-thickness: 1px !default;
 $base-border-radius: 4px !default;
@@ -156,3 +115,16 @@ $text-underline-offset-3: 3px !default;
 $text-underline-offset-4: 4px !default;
 $text-underline-offset-5: 5px !default;
 $text-underline-offset-8: 8px !default;
+
+// Filters
+
+// BLur
+$blur-none: 0 !default;
+$blur-default: 8px !default;
+$blur-sm: 4px !default;
+$blur-md: 12px !default;
+$blur-lg: 16px !default;
+$blur-xl: 24px !default;
+$blur-2xl: 40px !default;
+$blur-3xl: 64px !default;
+$blur-4xl: 84px !default;
