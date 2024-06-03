@@ -1,0 +1,679 @@
+@use "variables" as *;
+@use "breakpoints" as *;
+@use "functions" as *;
+@use "sass:map";
+
+// Layout
+
+$aspect-ratio-map: (
+  auto: auto,
+  square: calc(1 / 1),
+  video: calc(16 / 9),
+  4x3: calc(3 / 4),
+) !default;
+
+$spacing-map: map.merge(
+  spacing-function($base-spacing),
+  (
+    auto: auto,
+    full: 100%,
+  )
+) !default;
+
+$z-index-map: (
+  auto: auto,
+  0: 0,
+  1: 1,
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5,
+  6: 6,
+  7: 7,
+  8: 8,
+  9: 9,
+  10: 10,
+  20: 20,
+  30: 30,
+  40: 40,
+  50: 50,
+) !default;
+
+// Spacing
+
+$padding-map: spacing-function($base-padding) !default;
+
+$padding-y-map: () !default;
+
+@for $i from 1 to 100 {
+  @if ($i < 20 or ($i >= 20 and $i % 4 == 0)) {
+    $padding-y-map: map.set(
+      $padding-y-map,
+      $i,
+      (
+        padding-top: $i * 0.25rem,
+        padding-bottom: $i * 0.25rem,
+      )
+    );
+  }
+}
+
+$padding-x-map: () !default;
+
+@for $i from 1 to 100 {
+  @if ($i < 20 or ($i >= 20 and $i % 4 == 0)) {
+    $padding-x-map: map.set(
+      $padding-x-map,
+      $i,
+      (
+        padding-left: $i * 0.25rem,
+        padding-right: $i * 0.25rem,
+      )
+    );
+  }
+}
+
+$margin-map: map.merge(
+  spacing-function($base-margin),
+  (
+    auto: auto,
+  )
+) !default;
+
+$margin-y-map: (
+  auto: auto,
+) !default;
+
+@for $i from 1 to 100 {
+  @if ($i < 20 or ($i >= 20 and $i % 4 == 0)) {
+    $margin-y-map: map.set(
+      $margin-y-map,
+      $i,
+      (
+        margin-top: $i * 0.25rem,
+        margin-bottom: $i * 0.25rem,
+      )
+    );
+  }
+}
+
+$margin-x-map: (
+  auto: auto,
+) !default;
+
+@for $i from 1 to 100 {
+  @if ($i < 20 or ($i >= 20 and $i % 4 == 0)) {
+    $margin-x-map: map.set(
+      $margin-x-map,
+      $i,
+      (
+        margin-left: $i * 0.25rem,
+        margin-right: $i * 0.25rem,
+      )
+    );
+  }
+}
+
+// Sizing"
+
+$width-map: map.merge(
+  (
+    auto: auto,
+    full: 100%,
+    screen: 100vh,
+    svw: 100svw,
+    lvw: 100lvw,
+    dvw: 100dvw,
+    min: min-content,
+    max: max-content,
+    fit: fit-content,
+  ),
+  spacing-function()
+) !default;
+
+$min-width-map: map.merge(
+  (
+    full: 100%,
+    min: min-content,
+    max: max-content,
+    fit: fit-content,
+  ),
+  spacing-function()
+) !default;
+
+$max-w-map: map.merge(
+  (
+    full: 100%,
+    min: min-content,
+    max: max-content,
+    fit: fit-content,
+    sm: map-get($breakpoints, sm),
+    md: map-get($breakpoints, md),
+    lg: map-get($breakpoints, lg),
+    xl: map-get($breakpoints, xl),
+    xxl: map-get($breakpoints, xxl),
+    none: none,
+  ),
+  spacing-function()
+) !default;
+
+$height-map: map.merge(
+  (
+    auto: auto,
+    full: 100%,
+    screen: 100vh,
+    svw: 100svw,
+    lvw: 100lvw,
+    dvw: 100dvw,
+    min: min-content,
+    max: max-content,
+    fit: fit-content,
+  ),
+  spacing-function()
+) !default;
+
+$min-height-map: map.merge(
+  (
+    full: 100%,
+    screen: 100vh,
+    svw: 100svw,
+    lvw: 100lvw,
+    dvw: 100dvw,
+    min: min-content,
+    max: max-content,
+    fit: fit-content,
+  ),
+  spacing-function()
+) !default;
+
+$max-height-map: map.merge(
+  (
+    full: 100%,
+    screen: 100vh,
+    svw: 100svw,
+    lvw: 100lvw,
+    dvw: 100dvw,
+    min: min-content,
+    max: max-content,
+    fit: fit-content,
+    none: none,
+  ),
+  spacing-function()
+) !default;
+
+// Typography
+
+$font-family-map: (
+  sans-serif: $font-sans-serif,
+  serif: $font-serif,
+  monospace: $font-monospace,
+  arial: $font-arial,
+) !default;
+
+$font-size-map: (
+  base: $font-size-base,
+  xs: $font-size-xs,
+  sm: $font-size-sm,
+  lg: $font-size-lg,
+  xl: $font-size-xl,
+  2xl: $font-size-2xl,
+  3xl: $font-size-3xl,
+  4xl: $font-size-4xl,
+  5xl: $font-size-5xl,
+  6xl: $font-size-6xl,
+  7xl: $font-size-7xl,
+  8xl: $font-size-8xl,
+  9xl: $font-size-9xl,
+  h1: $font-size-h1,
+  h2: $font-size-h2,
+  h3: $font-size-h3,
+  h4: $font-size-h4,
+  h5: $font-size-h5,
+  h6: $font-size-h6,
+) !default;
+
+$letter-spacing-map: (
+  tighter: $letter-spacing-tighter,
+  tight: $letter-spacing-tight,
+  normal: $letter-spacing-normal,
+  wide: $letter-spacing-wide,
+  wider: $letter-spacing-wider,
+  widest: $letter-spacing-widest,
+) !default;
+
+$line-height-map: (
+  none: 1,
+  sm: $line-height-sm,
+  normal: $line-height-normal,
+  lg: $line-height-lg,
+  1: $line-height-1,
+  2: $line-height-2,
+  3: $line-height-3,
+  4: $line-height-4,
+  5: $line-height-5,
+  6: $line-height-6,
+  7: $line-height-7,
+  8: $line-height-8,
+  9: $line-height-9,
+  10: $line-height-10,
+) !default;
+
+// Borders
+
+$border-radius-map: (
+  none: 0,
+  default: $base-border-radius,
+  full: 50%,
+  2: $base-border-radius * 2,
+  3: $base-border-radius * 3,
+  4: $base-border-radius * 4,
+  5: $base-border-radius * 5,
+  6: $base-border-radius * 6,
+) !default;
+
+$border-width-map: (
+  none: 0,
+  default: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px,
+  6: 6px,
+  7: 7px,
+  8: 8px,
+  9: 9px,
+  10: 10px,
+  11: 11px,
+  12: 12px,
+  13: 13px,
+  14: 14px,
+  15: 15px,
+  16: 16px,
+  17: 17px,
+  18: 18px,
+  19: 19px,
+  20: 20px,
+) !default;
+
+$outline-width-map: (
+  none: 0,
+  default: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px,
+  6: 6px,
+  7: 7px,
+  8: 8px,
+  9: 9px,
+  10: 10px,
+) !default;
+
+// Effects
+
+$opacity-map: (
+  0: 0,
+  1: 0.01,
+  2: 0.02,
+  3: 0.03,
+  4: 0.04,
+  5: 0.05,
+  6: 0.06,
+  7: 0.07,
+  8: 0.08,
+  9: 0.09,
+  10: 0.1,
+  20: 0.2,
+  30: 0.3,
+  40: 0.4,
+  50: 0.5,
+  60: 0.6,
+  70: 0.7,
+  80: 0.8,
+  90: 0.9,
+  100: 1,
+) !default;
+
+// filters
+$blur-map: (
+  none: blur($blur-none),
+  default: blur($blur-default),
+  sm: blur($blur-sm),
+  md: blur($blur-md),
+  lg: blur($blur-lg),
+  xl: blur($blur-xl),
+  2xl: blur($blur-2xl),
+  3xl: blur($blur-3xl),
+  4xl: blur($blur-4xl),
+) !default;
+
+$brightness-map: (
+  0: brightness(0),
+  10: brightness(0.1),
+  20: brightness(0.2),
+  30: brightness(0.3),
+  40: brightness(0.4),
+  50: brightness(0.5),
+  60: brightness(0.6),
+  70: brightness(0.7),
+  75: brightness(0.75),
+  80: brightness(0.8),
+  90: brightness(0.9),
+  95: brightness(0.95),
+  100: brightness(1),
+  105: brightness(1.5),
+  110: brightness(1.1),
+  120: brightness(1.2),
+  125: brightness(1.25),
+  150: brightness(1.5),
+  200: brightness(2),
+) !default;
+
+$contrast-map: (
+  0: contrast(0),
+  10: contrast(0.1),
+  20: contrast(0.2),
+  30: contrast(0.3),
+  40: contrast(0.4),
+  50: contrast(0.5),
+  60: contrast(0.6),
+  70: contrast(0.7),
+  75: contrast(0.75),
+  80: contrast(0.8),
+  90: contrast(0.9),
+  95: contrast(0.95),
+  100: contrast(1),
+  105: contrast(1.5),
+  110: contrast(1.1),
+  120: contrast(1.2),
+  125: contrast(1.25),
+  150: contrast(1.5),
+  200: contrast(2),
+) !default;
+
+$grayscale-map: (
+  0: grayscale(0),
+  50: grayscale(0.5),
+  100: grayscale(1),
+) !default;
+
+$hue-rotate-map: (
+  0: hue-rotate(0deg),
+  15: hue-rotate(15deg),
+  30: hue-rotate(30deg),
+  60: hue-rotate(60deg),
+  90: hue-rotate(90deg),
+  100: hue-rotate(100deg),
+  180: hue-rotate(180deg),
+  200: hue-rotate(200deg),
+) !default;
+
+$invert-map: (
+  0: invert(0),
+  default: invert(100%),
+) !default;
+
+$saturate-map: (
+  0: saturate(0%),
+  15: saturate(15%),
+  30: saturate(30%),
+  60: saturate(60%),
+  90: saturate(90%),
+  100: saturate(100%),
+  180: saturate(180%),
+  200: saturate(200%),
+) !default;
+
+$sepia-map: (
+  0: sepia(0),
+  50: sepia(0.5),
+  100: sepia(1),
+) !default;
+
+$filter-map: (
+  blur: $blur-map,
+  brightness: $brightness-map,
+  contrast: $contrast-map,
+  grayscale: $grayscale-map,
+  hue-rotate: $hue-rotate-map,
+  invert: $invert-map,
+  saturate: $saturate-map,
+  sepia: $sepia-map,
+);
+
+$backdrop-blur-map: $blur-map !default;
+
+$backdrop-brightness-map: $brightness-map !default;
+
+$backdrop-contrast-map: $contrast-map !default;
+
+$backdrop-grayscale-map: $grayscale-map !default;
+
+$backdrop-hue-rotate-map: $hue-rotate-map !default;
+
+$backdrop-invert-map: $invert-map !default;
+
+$backdrop-opacity-map: $opacity-map !default;
+
+$backdrop-saturate-map: $saturate-map !default;
+
+$backdrop-sepia-map: $sepia-map !default;
+
+$backdrop-filter-map: (
+  backdrop-blur: $backdrop-blur-map,
+  backdrop-brightness: $backdrop-brightness-map,
+  backdrop-contrast: $backdrop-contrast-map,
+  backdrop-grayscale: $backdrop-grayscale-map,
+  backdrop-hue-rotate: $backdrop-hue-rotate-map,
+  backdrop-invert: $backdrop-invert-map,
+  backdrop-opacity: $backdrop-opacity-map,
+  backdrop-saturate: $backdrop-saturate-map,
+  backdrop-sepia: $backdrop-sepia-map,
+);
+
+$transition-map: (
+  none: (
+    transition-property: none,
+  ),
+  all: (
+    transition-property: all,
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1),
+    transition-duration: 150ms,
+  ),
+  default: (
+    transition-property: (
+      color,
+      background-color,
+      border-color,
+      text-decoration-color,
+      fill,
+      stroke,
+      opacity,
+      box-shadow,
+      transform,
+      filter,
+      backdrop-filter,
+    ),
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1),
+    transition-duration: 150ms,
+  ),
+  colors: (
+    transition-property: (
+      color,
+      background-color,
+      border-color,
+      text-decoration-color,
+      fill,
+      stroke,
+    ),
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1),
+    transition-duration: 150ms,
+  ),
+  opacity: (
+    transition-property: opacity,
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1),
+    transition-duration: 150ms,
+  ),
+  shadow: (
+    transition-property: box-shadow,
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1),
+    transition-duration: 150ms,
+  ),
+  transform: (
+    transition-property: transform,
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1),
+    transition-duration: 150ms,
+  ),
+);
+
+$transition-duration-map: (
+  0: 0s,
+  75: 75ms,
+  100: 100ms,
+  150: 150ms,
+  200: 200ms,
+  300: 300ms,
+  500: 500ms,
+  700: 700ms,
+  1000: 1000ms,
+) !default;
+
+$transition-timing-function-map: (
+  ease-linear: linear,
+  ease-in: cubic-bezier(0.4, 0, 1, 1),
+  ease-out: cubic-bezier(0, 0, 0.2, 1),
+  ease-in-out: cubic-bezier(0.4, 0, 0.2, 1),
+) !default;
+
+$transition-delay-map: (
+  0: 0s,
+  75: 75ms,
+  100: 100ms,
+  150: 150ms,
+  200: 200ms,
+  300: 300ms,
+  500: 500ms,
+  700: 700ms,
+  1000: 1000ms,
+) !default;
+
+$scale-map: (
+  0: scale(0%),
+  15: scale(15%),
+  30: scale(30%),
+  50: scale(50%),
+  60: scale(60%),
+  75: scale(75%),
+  90: scale(90%),
+  95: scale(95%),
+  100: scale(100%),
+  105: scale(105%),
+  110: scale(110%),
+  125: scale(125%),
+  150: scale(150%),
+  180: scale(180%),
+  200: scale(200%),
+) !default;
+
+$scale-x-map: (
+  0: scaleX(0%),
+  15: scaleX(15%),
+  30: scaleX(30%),
+  50: scaleX(50%),
+  60: scaleX(60%),
+  75: scaleX(75%),
+  90: scaleX(90%),
+  95: scaleX(95%),
+  100: scaleX(100%),
+  105: scaleX(105%),
+  110: scaleX(110%),
+  125: scaleX(125%),
+  150: scaleX(150%),
+  180: scaleX(180%),
+  200: scaleX(200%),
+) !default;
+
+$scale-y-map: (
+  0: scaleY(0%),
+  15: scaleY(15%),
+  30: scaleY(30%),
+  50: scaleY(50%),
+  60: scaleY(60%),
+  75: scaleY(75%),
+  90: scaleY(90%),
+  95: scaleY(95%),
+  100: scaleY(100%),
+  105: scaleY(105%),
+  110: scaleY(110%),
+  125: scaleY(125%),
+  150: scaleY(150%),
+  180: scaleY(180%),
+  200: scaleY(200%),
+) !default;
+
+$rotate-map: (
+  0: rotate(0deg),
+  1: rotate(1deg),
+  2: rotate(2deg),
+  3: rotate(3deg),
+  6: rotate(6deg),
+  12: rotate(12deg),
+  15: rotate(15deg),
+  30: rotate(30deg),
+  45: rotate(45deg),
+  60: rotate(60deg),
+  90: rotate(90deg),
+  100: rotate(100deg),
+  180: rotate(180deg),
+) !default;
+
+$translate-x-map: (
+  0: translateX(0px),
+  px: translateX(1px),
+) !default;
+
+@for $i from 1 through 100 {
+  @if ($i < 20 or ($i >= 20 and $i % 4 == 0)) {
+    $translate-x-map: map.set($translate-x-map, $i, translateX($i * 0.25rem));
+  }
+}
+
+$translate-y-map: (
+  0: translateY(0px),
+  px: translateY(1px),
+) !default;
+
+@for $i from 1 through 100 {
+  @if ($i < 20 or ($i >= 20 and $i % 4 == 0)) {
+    $translate-y-map: map.set($translate-y-map, $i, translateY($i * 0.25rem));
+  }
+}
+
+$skew-x-map: (
+  0: skewX(0deg),
+  1: skewX(1deg),
+  2: skewX(2deg),
+  3: skewX(3deg),
+  6: skewX(6deg),
+  12: skewX(12deg),
+) !default;
+
+$skew-y-map: (
+  0: skewY(0deg),
+  1: skewY(1deg),
+  2: skewY(2deg),
+  3: skewY(3deg),
+  6: skewY(6deg),
+  12: skewY(12deg),
+) !default;
+
+$transform-map: (
+  scale: $scale-map,
+  scale-x: $scale-x-map,
+  scale-y: $scale-y-map,
+  rotate: $rotate-map,
+  translate-x: $translate-x-map,
+  translate-y: $translate-y-map,
+  skew-x: $skew-x-map,
+  skew-y: $skew-y-map,
+) !default;
