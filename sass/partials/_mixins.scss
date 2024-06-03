@@ -1,3 +1,5 @@
+@use "breakpoints" as *;
+
 @mixin responsive-layout($prefix: sm) {
   @media (min-width: map-get($breakpoints, $prefix)) {
     @content;
@@ -7,6 +9,24 @@
 @mixin custom-layout($layout: 0) {
   @media (min-width: $layout) {
     @content;
+  }
+}
+
+@mixin generate-utility($cssClass, $property, $value) {
+  .#{$cssClass} {
+    #{$property}: $value;
+  }
+  .hover-#{$cssClass} {
+    &:hover {
+      #{$property}: $value;
+    }
+  }
+  @each $responsive-prefix, $val in $breakpoints {
+    @include responsive-layout($responsive-prefix) {
+      .#{$responsive-prefix}-#{$cssClass} {
+        #{$property}: $value !important;
+      }
+    }
   }
 }
 
