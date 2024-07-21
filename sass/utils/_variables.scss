@@ -1,10 +1,23 @@
+@use "sass:map";
+
 // Theme Colors
 $primary: #326dee !default;
 $secondary: #1ac886 !default;
 $error: #d32752 !default;
 $info: #f6c31c !default;
+$blue: #1919e6 !default;
+$red: #e61919 !default;
+$yellow: #e6e619 !default;
+$green: #19e635 !default;
+$orange: #ffa600 !default;
+$purple: #9900ff !default;
+$gray: #808080 !default;
+$black: black !default;
+$white: white !default;
 
 // Color Palette
+$custom-colors: () !default;
+
 $colors: (
   "primary": $primary,
   "secondary": $secondary,
@@ -12,16 +25,18 @@ $colors: (
   "info": $info,
   "transparent": transparent,
   "inherit": inherit,
-  "blue": #1919e6,
-  "red": #e61919,
-  "yellow": #e6e619,
-  "green": #19e635,
-  "orange": #ffa600,
-  "purple": #9900ff,
-  "gray": #808080,
-  "black": black,
-  "white": white,
+  "blue": $blue,
+  "red": $red,
+  "yellow": $yellow,
+  "green": $green,
+  "orange": $orange,
+  "purple": $purple,
+  "gray": $gray,
+  "black": $black,
+  "white": $white,
 ) !default;
+
+$colors: map.merge($colors, $custom-colors);
 
 // Spacing
 $base-padding: 0.25rem !default; // 4px
@@ -80,6 +95,7 @@ $letter-spacing-wider: 0.05em !default;
 $letter-spacing-widest: 0.1em !default;
 
 // Line Height
+$line-height-none: 1 !default;
 $line-height-sm: 1.25 !default;
 $line-height-normal: normal !default;
 $line-height-lg: 2 !default;

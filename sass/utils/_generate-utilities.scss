@@ -1,10 +1,12 @@
+@use "sass:math";
+@use "sass:map";
+
 @use "variables" as *;
 @use "functions" as *;
-@use "breakpoints" as *;
+@use "../layout/breakpoints" as *;
+@use "../layout/grid" as *;
 @use "mixins" as *;
 @use "utilities" as *;
-
-@use "sass:map";
 
 // generate utility classes
 @each $property, $val in $utilities {
@@ -73,6 +75,14 @@
   }
 }
 
+// Generate grid system utilities
+@for $i from 1 through $grid-columns {
+  $prefix: col-#{$i};
+  $value: 0 0 math.div(100%, $grid-columns) * $i;
+
+  @include generate-utility($prefix, flex, $value);
+}
+
 // Generate Color variations
 @each $key, $val in $colors {
   @if $val !=
@@ -85,9 +95,9 @@
     inherit
   {
     //   light variations
-    @include generate-color-variations($key, $val, "light");
+    @include generate-light-color-variations($key, $val);
 
     //  dark variations
-    @include generate-color-variations($key, $val, "dark");
+    @include generate-dark-color-variations($key, $val);
   }
 }

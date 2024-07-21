@@ -1,6 +1,6 @@
 @use "sass:map";
 
-@use "partials/variables" as *;
+@use "../utils/variables" as *;
 
 @mixin btn($bg-color: $primary) {
   appearance: button;

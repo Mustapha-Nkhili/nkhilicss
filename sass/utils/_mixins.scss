@@ -1,0 +1,101 @@
+@use "../layout/breakpoints" as *;
+
+@mixin responsive-layout($prefix: sm) {
+  @media (min-width: map-get($breakpoints, $prefix)) {
+    @content;
+  }
+}
+
+@mixin custom-layout($layout: 0) {
+  @media (min-width: $layout) {
+    @content;
+  }
+}
+
+@mixin generate-utility($cssClass, $property, $value) {
+  .#{$cssClass} {
+    #{$property}: $value;
+  }
+  .hover-#{$cssClass} {
+    &:hover {
+      #{$property}: $value;
+    }
+  }
+  @each $responsive-prefix, $val in $breakpoints {
+    @include responsive-layout($responsive-prefix) {
+      .#{$responsive-prefix}-#{$cssClass} {
+        #{$property}: $value !important;
+      }
+    }
+  }
+}
+
+@mixin generate-light-color-variations($key, $val) {
+  @for $i from 1 through 5 {
+    .text-#{$key}-#{(6 - $i) * 100} {
+      color: mix(white, $val, $i * 15%);
+    }
+    .hover-text-#{$key}-#{(6 - $i) * 100} {
+      &:hover {
+        color: mix(white, $val, $i * 15%);
+      }
+    }
+    @each $responsive-prefix, $value in $breakpoints {
+      @include responsive-layout($responsive-prefix) {
+        .#{$responsive-prefix}-text-#{$key}-#{(6 - $i) * 100} {
+          color: mix(white, $val, $i * 15%) !important;
+        }
+      }
+    }
+    .bg-#{$key}-#{(6 - $i) * 100} {
+      background-color: mix(white, $val, $i * 15%);
+    }
+    .hover-bg-#{$key}-#{(6 - $i) * 100} {
+      &:hover {
+        background-color: mix(white, $val, $i * 15%);
+      }
+    }
+    @each $responsive-prefix, $value in $breakpoints {
+      @include responsive-layout($responsive-prefix) {
+        .#{$responsive-prefix}-bg-#{$key}-#{(6 - $i) * 100} {
+          background-color: mix(white, $val, $i * 15%) !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-dark-color-variations($key, $val) {
+  @for $i from 5 through 8 {
+    .text-#{$key}-#{$i * 100 + 100} {
+      color: mix(black, $val, $i * 10%);
+    }
+    .hover-text-#{$key}-#{$i * 100 + 100} {
+      &:hover {
+        color: mix(black, $val, $i * 10%);
+      }
+    }
+    @each $responsive-prefix, $value in $breakpoints {
+      @include responsive-layout($responsive-prefix) {
+        .#{$responsive-prefix}-text-#{$key}-#{$i * 100 + 100} {
+          color: mix(black, $val, $i * 10%) !important;
+        }
+      }
+    }
+    .bg-#{$key}-#{$i * 100 + 100} {
+      background-color: mix(black, $val, $i * 10%);
+    }
+    .hover-bg-#{$key}-#{$i * 100 + 100} {
+      &:hover {
+        background-color: mix(black, $val, $i * 10%);
+      }
+    }
+    @each $responsive-prefix, $value in $breakpoints {
+      @include responsive-layout($responsive-prefix) {
+        .#{$responsive-prefix}-bg-#{$key}-#{$i * 100 + 100} {
+          background-color: mix(black, $val, $i * 10%) !important;
+        }
+      }
+    }
+  }
+}

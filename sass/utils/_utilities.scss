@@ -4,6 +4,9 @@
 @use "utilities-maps" as *;
 @use "variables" as *;
 
+// Define custom utilities map
+$custom-utilities: () !default;
+
 // Define utilities map
 $utilities: (
   // Layout
@@ -121,6 +124,167 @@ $utilities: (
   "z-index": (
     prefix: z,
     values: $z-index-map,
+  ),
+  // Flexbox & Grid
+  "flex-basis": (
+    prefix: basis,
+    values: $flex-basis-map,
+  ),
+  "flex-direction": (
+    prefix: flex,
+    values: (
+      row: row,
+      row-reverse: row-reverse,
+      column: column,
+      column-reverse: column-reverse,
+    ),
+  ),
+  "flex": (
+    prefix: flex,
+    values: $flex-map,
+  ),
+  "flex-grow": (
+    prefix: flex-grow,
+    values: $flex-grow-map,
+  ),
+  "flex-shrink": (
+    prefix: flex-shrink,
+    values: $flex-shrink-map
+  ),
+  "flex-wrap": (
+    prefix: flex,
+    values: (
+      wrap: wrap,
+      wrap-reverse: wrap-reverse,
+      nowrap: nowrap,
+    ),
+  ),
+  "order": (
+    prefix: order,
+    values: $order-map,
+  ),
+  "justify-content": (
+    prefix: justify,
+    values: (
+      flex-start: flex-start,
+      flex-end: flex-end,
+      center: center,
+      between: space-between,
+      around: space-around,
+      evenly: space-evenly,
+      start: start,
+      end: end,
+      left: left,
+      right: right,
+    ),
+  ),
+  "justify-items": (
+    prefix: justify-items,
+    values: (
+      start: start,
+      end: end,
+      center: center,
+      stretch: stretch,
+    ),
+  ),
+  "justify-self": (
+    prefix: self,
+    values: (
+      auto: auto,
+      normal: normal,
+      stretch: stretch,
+      flex-start: flex-start,
+      flex-end: flex-end,
+      center: center,
+      baseline: baseline,
+      start: start,
+      end: end,
+    ),
+  ),
+  "align-items": (
+    prefix: items,
+    values: (
+      normal: normal,
+      stretch: stretch,
+      flex-start: flex-start,
+      flex-end: flex-end,
+      center: center,
+      baseline: baseline,
+      start: start,
+      end: end,
+    ),
+  ),
+  "align-content": (
+    prefix: content,
+    values: (
+      normal: normal,
+      flex-start: flex-start,
+      flex-end: flex-end,
+      center: center,
+      between: space-between,
+      around: space-around,
+      evenly: space-evenly,
+      start: start,
+      end: end,
+      left: left,
+      right: right,
+    ),
+  ),
+  "align-self": (
+    prefix: align-self,
+    values: (
+      auto: auto,
+      center: center,
+      start: start,
+      end: end,
+      stretch: stretch,
+      baseline: baseline,
+    ),
+  ),
+  "place-content": (
+    prefix: place-content,
+    values: (
+      center: center,
+      between: space-between,
+      around: space-around,
+      evenly: space-evenly,
+      baseline: baseline,
+      stretch: stretch,
+      start: start,
+      end: end,
+    ),
+  ),
+  "place-items": (
+    prefix: place-items,
+    values: (
+      center: center,
+      baseline: baseline,
+      stretch: stretch,
+      start: start,
+      end: end,
+    ),
+  ),
+  "place-self": (
+    prefix: place-self,
+    values: (
+      center: center,
+      auto: auto,
+      stretch: stretch,
+      start: start,
+      end: end,
+    ),
+  ),
+  "gap": (
+    prefix: gap,
+    values: $gap-map,
+  ),
+  "row-gap": (
+    prefix: gap-y,
+    values: $gap-map,
+  ),
+  "column-gap": (
+    prefix: gap-x,
+    values: $gap-map,
   ),
   // Spacing
   "padding":
@@ -241,15 +405,7 @@ $utilities: (
   ),
   "font-weight": (
     prefix: font,
-    values: (
-      lighter: $font-weight-lighter,
-      light: $font-weight-light,
-      normal: $font-weight-normal,
-      medium: $font-weight-medium,
-      semibold: $font-weight-semibold,
-      bold: $font-weight-bold,
-      bolder: $font-weight-bolder,
-    ),
+    values: $font-weight-map,
   ),
   "letter-spacing": (
     prefix: letter-spacing,
@@ -268,11 +424,7 @@ $utilities: (
   ),
   "list-style-type": (
     prefix: list-style,
-    values: (
-      none: none,
-      disc: disc,
-      decimal: decimal,
-    ),
+    values: $list-style-type-map
   ),
   "text-align": (
     prefix: text,
@@ -302,36 +454,23 @@ $utilities: (
     prefix: text-dec,
     values: $colors,
   ),
-  "text-decoration-thickness": (
+  "text-decoration-style": (
     prefix: text-dec,
     values: (
-      auto: auto,
-      from-font: from-font,
-      0: $text-decoration-thickness-0,
-      1: $text-decoration-thickness-1,
-      2: $text-decoration-thickness-2,
-      3: $text-decoration-thickness-3,
-      4: $text-decoration-thickness-4,
-      5: $text-decoration-thickness-5,
-      6: $text-decoration-thickness-6,
-      7: $text-decoration-thickness-7,
-      8: $text-decoration-thickness-8,
-      9: $text-decoration-thickness-9,
-      10: $text-decoration-thickness-10,
+      solid: solid,
+      double: double,
+      dotted: dotted,
+      dashed: dashed,
+      wavy: wavy,
     ),
   ),
+  "text-decoration-thickness": (
+    prefix: text-dec,
+    values: $text-decoration-thickness-map,
+  ),
   "text-underline-offset": (
-    prefix: text-underline-offset,
-    values: (
-      auto: auto,
-      0: $text-underline-offset-0,
-      1: $text-underline-offset-1,
-      2: $text-underline-offset-2,
-      3: $text-underline-offset-3,
-      4: $text-underline-offset-4,
-      5: $text-underline-offset-5,
-      8: $text-underline-offset-8,
-    ),
+    prefix: underline-offset,
+    values: $text-underline-offset-map,
   ),
   "text-transform": (
     values: (
@@ -358,11 +497,11 @@ $utilities: (
     ),
   ),
   "text-indent": (
-    prefix: text-indent,
-    values: spacing-function(),
+    prefix: indent,
+    values: $text-indent-map,
   ),
   "white-space": (
-    prefix: white-space,
+    prefix: whitespace,
     values: (
       normal: normal,
       nowrap: nowrap,
@@ -387,7 +526,7 @@ $utilities: (
       values: (
         fixed: fixed,
         local: local,
-        auto: auto,
+        scroll: scroll,
       ),
     ),
   "background-clip": (
@@ -399,23 +538,21 @@ $utilities: (
       text: text,
     ),
   ),
+  "background-origin": (
+    prefix: bg-origin,
+    values: (
+      border: border-box,
+      padding: padding-box,
+      content: content-box,
+    ),
+  ),
   "background-color": (
     prefix: bg,
     values: $colors,
   ),
   "background-position": (
     prefix: bg,
-    values: (
-      top: top,
-      center: center,
-      left: left,
-      left-bottom: left bottom,
-      left-top: left top,
-      right: right,
-      right-bottom: right bottom,
-      right-top: right top,
-      bottom: bottom,
-    ),
+    values: $background-position-map,
   ),
   "background-repeat": (
     prefix: bg,
@@ -430,11 +567,7 @@ $utilities: (
   ),
   "background-size": (
     prefix: bg,
-    values: (
-      auto: auto,
-      cover: cover,
-      contain: contain,
-    ),
+    values: $background-size-map,
   ),
   // Borders
   "border-radius":
@@ -469,6 +602,7 @@ $utilities: (
     prefix: border-l,
     values: $colors,
   ),
+
   "border-left-style": (
     prefix: border-l,
     values: (
@@ -480,14 +614,17 @@ $utilities: (
       none: none,
     ),
   ),
+
   "border-right-width": (
     prefix: border-r,
     values: $border-width-map,
   ),
+
   "border-right-color": (
     prefix: border-r,
     values: $colors,
   ),
+
   "border-right-style": (
     prefix: border-r,
     values: (
@@ -499,14 +636,17 @@ $utilities: (
       none: none,
     ),
   ),
+  
   "border-top-width": (
     prefix: border-t,
     values: $border-width-map,
   ),
+
   "border-top-color": (
     prefix: border-t,
-    values: $colors,
+    values: $colors
   ),
+
   "border-top-style": (
     prefix: border-t,
     values: (
@@ -518,14 +658,17 @@ $utilities: (
       none: none,
     ),
   ),
+
   "border-bottom-width": (
     prefix: border-b,
     values: $border-width-map,
   ),
+
   "border-bottom-color": (
     prefix: border-b,
     values: $colors,
   ),
+  
   "border-bottom-style": (
     prefix: border-b,
     values: (
@@ -536,6 +679,23 @@ $utilities: (
       hidden: hidden,
       none: none,
     ),
+  ),
+
+  "border-width-y": (
+    prefix: border-y,
+    classes: (
+      border-top-width,
+      border-bottom-width,
+    ),
+    values: $border-width-y-map,
+  ),
+  "border-width-x": (
+    prefix: border-x,
+    classes: (
+      border-left-width,
+      border-right-width,
+    ),
+    values: $border-width-x-map,
   ),
   "border-collapse": (
     prefix: border,
@@ -565,7 +725,7 @@ $utilities: (
   ),
   "outline-offset": (
     prefix: outline-offset,
-    values: $outline-width-map,
+    values: $outline-offset-map,
   ),
   // Filters
   "filter":
@@ -609,7 +769,7 @@ $utilities: (
         transition-timing-function,
         transition-duration,
       ),
-      values: $transition-map,
+      values: $transition-property-map,
     ),
   "transition-duration": (
     prefix: duration,
@@ -640,17 +800,7 @@ $utilities: (
     ),
   "transform-origin": (
     prefix: origin,
-    values: (
-      center: center,
-      top: top,
-      top-right: top right,
-      right: right,
-      bottom-right: bottom right,
-      bottom: bottom,
-      bottom-left: bottom-left,
-      left: left,
-      top-left: top left,
-    ),
+    values: $transform-origin-map,
   ),
 
   // Interactivity
@@ -668,27 +818,7 @@ $utilities: (
   ),
   "cursor": (
     prefix: cursor,
-    values: (
-      auto: auto,
-      default: default,
-      pointer: pointer,
-      wait: wait,
-      text: text,
-      move: move,
-      not-allowed: not-allowed,
-      none: none,
-      context-menu: context-menu,
-      progress: progress,
-      cell: cell,
-      crosshair: crosshair,
-      vertical-text: vertical-text,
-      alias: alias,
-      copy: copy,
-      no-drop: no-drop,
-      grab: grab,
-      grabbing: grabbing,
-      all-scroll: all-scroll,
-    ),
+    values: $cursor-map
   ),
   "caret-color": (
     prefix: caret,
@@ -736,3 +866,5 @@ $utilities: (
     ),
   )
 ) !default;
+
+$utilities: map.merge($utilities, $custom-utilities);

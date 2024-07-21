@@ -1,0 +1,15 @@
+@use "sass:math";
+
+$grid-columns: 12 !default;
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
