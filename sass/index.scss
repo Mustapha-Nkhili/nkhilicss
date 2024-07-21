@@ -1,23 +1,5 @@
-// variables & functions
-@forward "partials/variables";
-@forward "partials/functions";
-
 // base
-@forward "partials/base";
-
-// layouts
-@forward "partials/breakpoints";
-
-// maps  & mixins
-@forward "partials/utilities-maps";
-@forward "partials/mixins";
-
-// components
-@forward "components/button";
-
-// utilities
-@forward "partials/utilities";
-@forward "partials/grid";
+@forward "base/base";
 
 // generate utilities
-@forward "partials/generate-utilities";
+@forward "utils/generate-utilities";
