@@ -62,11 +62,15 @@
   .btn-#{$key} {
     @include btn($val);
     @if ($val == black) {
-      color: white;
+      & {
+        color: white;
+      }
     }
   }
   .btn-outlined-#{$key} {
     @include btn(white);
-    border: $base-border-thickness solid $val;
+    & {
+      border: $base-border-thickness solid $val;
+    }
   }
 }
